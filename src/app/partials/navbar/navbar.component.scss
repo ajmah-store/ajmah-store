@@ -1,0 +1,14 @@
+@import "../../variables.scss";
+
+#navbar {
+    background: $primary;
+    border-radius: 0 !important;
+    z-index: 1000;
+
+    #navbar-search {
+        flex: 1;
+        .prompt {
+            border-radius: 4px;
+        }
+    }
+}

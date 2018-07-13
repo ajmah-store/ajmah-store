@@ -1,1 +1,123 @@
-/* You can add global styles to this file, and also import other style files */
+.spacer {
+    display: block;
+    height: 16px;
+}
+
+.aj-container {
+    padding: 4em !important;
+    box-sizing: border-box !important;
+}
+
+.text-upper {
+    text-transform: uppercase !important;
+}
+
+.page {
+    width: 100%;
+    height: 100%;
+}
+
+.hasGrid {
+    padding: 14px;
+}
+
+//pull
+.pull-right {
+    margin-left: auto;
+}
+.pull-left {
+    margin-right: auto;
+}
+
+//Fix for vertical divider
+.ui.grid>.column+.divider-wrap, .ui.grid>.row>.column+.divider-wrap {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+/**
+*   Semantic Overrides
+**/
+.evenly.divided.menu:not(.vertical) {
+    .item {
+        flex: 1;
+    }
+}
+
+/**                     **\
+**  Responsive Utilities **
+\**                     **/
+
+/* Mobile */
+
+@media only screen and (max-width: 767px) {
+    .mobile-hide{
+        display: none !important;
+    }
+    .tablet-visible {
+        display: none !important;
+    }
+    .small-visible {
+        display: none !important;
+    }
+    .large-visible {
+        display: none !important;
+    }
+}
+
+/* Tablet */
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .tablet-hide{
+        display: none !important;
+    }
+
+    .mobile-visible {
+        display: none !important;
+    }
+    .small-visible {
+        display: none !important;
+    }
+    .large-visible {
+        display: none !important;
+    }
+}
+
+/* Small Monitor */
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .small-hide{
+        display: none !important;
+    }
+
+    .mobile-visible {
+        display: none !important;
+    }
+    .tablet-visible {
+        display: none !important;
+    }
+    .large-visible {
+        display: none !important;
+    }
+}
+
+
+/* Large Monitor */
+
+@media only screen and (min-width: 1200px) {
+    .large-hide{
+        display: none !important;
+    }
+
+    .mobile-visible {
+        display: none !important;
+    }
+    .tablet-visible {
+        display: none !important;
+    }
+    .small-visible {
+        display: none !important;
+    }
+}
+

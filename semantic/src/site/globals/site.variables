@@ -29,3 +29,9 @@
 @secondaryColor : @grey;
 
 @linkColor           : lighten(@primaryColor, 15%);
+
+/* Used on inputs, textarea etc */
+@focusedFormBorderColor: @primaryColor;
+
+/* Used on dropdowns, other larger blocks */
+@focusedFormMutedBorderColor: @primaryColor;

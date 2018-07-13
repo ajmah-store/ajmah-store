@@ -1,0 +1,46 @@
+<div id="navbar" class="ui inverted segment">
+    <div class="ui inverted secondary menu">
+
+        <div id="navbar-dropdown" class="ui icon top left pointing dropdown primary button mobile-visible">
+            <i class="bars icon"></i>
+            <div class="menu">
+                <a *ngFor="let link of menuLinks" [routerLink]="link.href" routerLinkActive="active" class="item">
+                    <i [class]="link.icon + ' icon'"></i>
+                    {{link.label}}
+                </a>
+            </div>
+        </div>
+
+        <!-- menu desktop -->
+        <div class="menu mobile-hide">
+            <a *ngFor="let link of menuLinks" [routerLink]="link.href" routerLinkActive="active" class="item">
+                <i [class]="link.icon + ' icon'"></i>
+                {{link.label}}
+            </a>
+        </div>
+        <!-- /menu desktop -->
+
+        <!-- search -->
+        <div id="navbar-search" class="ui search fluid item">
+            <div class="ui transparent inverted icon input">
+                <input class="prompt" type="text" placeholder="Search Product....">
+                <i class="search icon"></i>
+            </div>
+            <div class="results"></div>
+        </div>
+        <!-- /search -->
+
+        <!-- right -->
+        <div class="right menu mobile-hide">
+            <a routerLink="login" routerLinkActive="active" class="item">
+                <i class="sign-in icon"></i>
+                Login/Signup
+            </a>
+            <a routerLink="profile" routerLinkActive="active" class="item">
+                <img src="assets/avatar.jpg" class="ui avatar image">
+                <span>John Doe</span>
+            </a>
+        </div>
+        <!-- /right -->
+    </div>
+</div>

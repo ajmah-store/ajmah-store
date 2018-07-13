@@ -1,0 +1,23 @@
+<footer id="footer" class="ui inverted segment">
+  <div class="hasGrid">
+    <div class="ui stackable three column grid">
+      <div class="column">
+        <div class="ui inverted text vertical menu mobile-hide">
+          <a *ngFor="let link of menu_links" [routerLink]="link.href" class="item">
+              <i class="small icon" [ngClass]="link.icon"></i>
+            {{link.label}}
+          </a>
+        </div>
+        <div class="ui inverted evenly divided item labeled icon tiny text menu mobile-visible">
+          <a *ngFor="let link of menu_links" [routerLink]="link.href" class="item">
+            <i class="icon" [ngClass]="link.icon"></i>
+            {{link.label}}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="copyright" class="ui inverted center aligned segment">
+    Copyright Ajmah &copy; {{this_year}}. Designed by Tracing Paper
+  </div>
+</footer>

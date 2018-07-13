@@ -1,8 +1,75 @@
-<div id="loginPage" class="ui stackable two column grid">
-  <div id="loginColumn" class="column">
-    
-  </div>
-  <div id="signupColumn" class="colum">
+<div id="loginPage" class="page hasGrid">
+    <div class="ui stackable two column grid">
+        <div id="loginColumn" class="column aj-container">
+            <div class="ui card fluid">
+                <div class="content">
+                    <div class="ui center aligned header text-upper">Login</div>
+                </div>
+                <div class="content">
+                    <!-- Login Form -->
+                    <form class="ui large form">
+                        <div class="field">
+                            <label>Email</label>
+                            <input type="email" name="email" placeholder="Email">
+                        </div>
+                        <div class="field">
+                            <label>Password</label>
+                            <input type="password" name="password" placeholder="Password">
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="center aligned">
+                            <button class="ui button primary right labeled icon" type="submit"><i class="sign-in icon"></i> Login</button>
+                        </div>
+                    </form><!-- /Login Form-->
+                </div><!-- /content-->
+            </div><!-- /card-->
+                
+        </div> <!-- /loginColumn -->
 
-  </div>
+        <div class="divider-wrap">
+            <div class="ui vertical divider">or</div>
+        </div>
+    
+        <div id="signupColumn" class="column aj-container">
+            
+            <div class="ui card fluid">
+                <div class="content">
+                    <div class="ui center aligned header text-upper">Create Account</div>
+                </div>
+                <div class="content">
+                    <!-- Signup Form -->
+                    <form class="ui large form">
+
+                        <!-- Name Field Group -->
+                        <div class="equal width fields">
+                            <div class="field">
+                                <label>First Name</label>
+                                <input type="text" name="first-name" placeholder="First Name">
+                            </div>
+
+                            <div class="field">
+                                <label>Last Name</label>
+                                <input type="text" name="last-name" placeholder="Last Name">
+                            </div>
+                        </div>
+                        <!-- /Name Field Group -->
+
+                        <div class="field">
+                            <label>Email</label>
+                            <input type="email" name="email" placeholder="Email">
+                        </div>
+                        <div class="field">
+                            <label>Password</label>
+                            <input type="password" name="password" placeholder="Password">
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="center aligned">
+                            <button class="ui button primary right labeled icon" type="submit"><i class="pencil icon"></i> Create Account</button>
+                        </div>
+                    </form><!-- /Signup Form-->
+                </div><!-- /content-->
+            </div><!-- /card-->
+
+        </div><!-- /signupColumn -->
+    </div>
 </div>
