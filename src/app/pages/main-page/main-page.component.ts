@@ -10,6 +10,20 @@ export class MainPageComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
+    //initialize common semantic ui components
+    this.initUI();
+  }
+
+  initUI() {
+
+    //checkbox
+    $('.ui.checkbox').checkbox();
+    //$('.ui.radio.checkbox').checkbox();
+
+    //select dropdown
+    $('select.dropdown').dropdown();
+
   }
 
 }

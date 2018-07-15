@@ -1,0 +1,7 @@
+<button (click)="emitClick()" class="ui labeled icon mobile-hide button" [ngClass]="getStyle()">
+  <i class="icon" [ngClass]="icon"></i>
+  <ng-content></ng-content>
+</button>
+<button (click)="emitClick()" class="ui icon mobile-visible button" [ngClass]="getStyle()">
+  <i class="icon" [ngClass]="icon"></i>
+</button>

@@ -28,10 +28,12 @@
             ],
             "styles": [
               "src/styles.scss",
-              "semantic/dist/semantic.min.css"
+              "semantic/dist/semantic.min.css",
+              "semantic-calender/calendar.min.css"
             ],
             "scripts": [
-              "semantic/dist/semantic.min.js"
+              "semantic/dist/semantic.min.js",
+              "semantic-calender/calendar.min.js"
             ]
           },
           "configurations": {

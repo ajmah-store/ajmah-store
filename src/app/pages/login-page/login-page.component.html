@@ -7,14 +7,14 @@
                 </div>
                 <div class="content">
                     <!-- Login Form -->
-                    <form class="ui large form">
-                        <div class="field">
+                    <form class="ui large form" [formGroup]="loginForm">
+                        <div class="required field">
                             <label>Email</label>
-                            <input type="email" name="email" placeholder="Email">
+                            <input type="email" formControlName="email" placeholder="Email">
                         </div>
-                        <div class="field">
+                        <div class="required field">
                             <label>Password</label>
-                            <input type="password" name="password" placeholder="Password">
+                            <input type="password" formControlName="password" placeholder="Password">
                         </div>
                         <div class="spacer"></div>
                         <div class="center aligned">
@@ -38,29 +38,33 @@
                 </div>
                 <div class="content">
                     <!-- Signup Form -->
-                    <form class="ui large form">
+                    <form class="ui large form" [formGroup]="registerForm">
 
                         <!-- Name Field Group -->
                         <div class="equal width fields">
-                            <div class="field">
+                            <div class="required field">
                                 <label>First Name</label>
-                                <input type="text" name="first-name" placeholder="First Name">
+                                <input type="text" formControlName="first_name" placeholder="John">
                             </div>
 
-                            <div class="field">
+                            <div class="required field">
                                 <label>Last Name</label>
-                                <input type="text" name="last-name" placeholder="Last Name">
+                                <input type="text" formControlName="last_name" placeholder="Doe">
                             </div>
                         </div>
                         <!-- /Name Field Group -->
 
-                        <div class="field">
+                        <div class="required field">
                             <label>Email</label>
-                            <input type="email" name="email" placeholder="Email">
+                            <input type="email" formControlName="email" placeholder="johndoe@example.com">
                         </div>
-                        <div class="field">
+                        <div class="required field">
+                            <label>Contact Number</label>
+                            <input type="text" formControlName="phone" placeholder="xxxx xxx xxx">
+                        </div>
+                        <div class="required field">
                             <label>Password</label>
-                            <input type="password" name="password" placeholder="Password">
+                            <input type="password" formControlName="password" placeholder="Minimum 8 characters">
                         </div>
                         <div class="spacer"></div>
                         <div class="center aligned">

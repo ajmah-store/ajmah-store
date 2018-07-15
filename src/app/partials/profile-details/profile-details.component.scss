@@ -1,0 +1,12 @@
+#profile-pic-container {
+    cursor: pointer;
+    margin: 0 auto;
+    overflow: hidden;
+    z-index: inherit;
+}
+
+#right-column {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}

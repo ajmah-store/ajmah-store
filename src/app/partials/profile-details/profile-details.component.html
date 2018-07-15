@@ -1,0 +1,112 @@
+<!-- Profile -->
+<h2 class="ui header">Profile</h2>
+<div class="ui mobile reversed stackable grid">
+  <div class="ten wide column">
+    <form class="ui equal width form">
+
+      <!-- Name Field Group -->
+      <div class="equal width fields">
+        <div class="required field">
+          <label for="first-name">First Name</label>
+          <input type="text" placeholder="John">
+        </div>
+        <div class="required field">
+          <label for="last-name">Last Name</label>
+          <input type="text" placeholder="Doe">
+        </div>
+      </div>
+      <!-- /Name -->
+
+      <!-- DOB Gender -->
+      <div class="equal width fields">
+        <!-- Gender -->
+        <div class="field">
+          <label for="gender">Gender</label>
+          <select name="gender" class="dropdown">
+            <option value="male">
+              <i class="mars icon"></i>Male</option>
+            <option value="female">
+              <i class="venus icon"></i>Female</option>
+            <option value="other">
+              <i class="transgender alternate icon"></i>Other</option>
+          </select>
+        </div>
+        <!-- /Gender -->
+
+        <!-- DOB -->
+        <div class="field">
+          <label for="dob">Date of Birth</label>
+          <div class="ui calendar date" id="dob_calender">
+            <div class="ui input left icon">
+              <i class="calendar icon"></i>
+              <input type="text" placeholder="January 1, 2018">
+            </div>
+          </div>
+        </div>
+        <!-- /DOB -->
+
+      </div>
+      <!-- DOB Gender -->
+
+      <!-- Phone -->
+      <div class="required field">
+        <label for="phone">Contact No.</label>
+        <input type="text" name="phone" placeholder="xxxx xxx xxx">
+      </div>
+      <!-- /Phone -->
+      <div class="ui primary right labeled icon button" [class.loading]="formIsLoading">
+        <i class="sync icon"></i>
+        Update Profile
+      </div>
+    </form>
+    <!-- Profile Form -->
+  </div>
+  <div class="six wide column">
+
+    <div class="ui basic segment" id="right-column">
+
+      <!-- Profile Pic Computer -->
+      <div 
+        class="ui blurring circular nopadding segment" 
+        id="profile-pic-container" 
+        [class.loading]="pictureIsLoading"
+        (mouseenter)="dim('#profile-pic-dimmer')"
+        (click)="dim('#profile-pic-dimmer')" 
+        (mouseleave)="reveal('#profile-pic-dimmer')">
+
+        <img src="assets/avatar.jpg" alt="Profile Picture" class="ui small centered circular image" #profilePicture>
+        <div class="ui dimmer" id="profile-pic-dimmer">
+          <div class="content">
+            <button class="ui inverted small button" (click)="browsePicture()">
+              <!-- <i class="image icon"></i> -->
+              Change
+            </button>
+            <input type="file" #inputPicture hidden (change)="selectPicture($event.srcElement.files)">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Edit Picture Modal -->
+    <div class="ui modal" #editPictureModal>
+      <div class="header">Edit Picture</div>
+      <div class="center aligned content">
+        <div #cropPicture></div>
+      </div>
+      <div class="actions">
+        <button class="ui labeled icon cancel button">
+          <i class="remove icon"></i>
+          Cancel
+        </button>
+        <button class="ui labeled icon positive button">
+          <i class="checkmark icon"></i>
+          Confirm
+        </button>
+      </div>
+    </div>
+    <!-- /Edit Pricture Model -->
+
+  </div>
+</div>
+<!-- /Profile -->

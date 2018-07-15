@@ -1,0 +1,133 @@
+<!-- Login and Security -->
+
+<h2 class="ui header">Login &amp; Security</h2>
+
+<!-- Login Details -->
+<h3 class="ui top attached header">Login Details</h3>
+<div class="ui bottom attached segment">
+  <div class="ui relaxed middle aligned list" [@listAnimation]="[enableEditEmail, enableEditPassword]">
+    <!-- Email -->
+    <div class="item">
+
+      <div class="right floated content">
+        <!-- Change Email Button -->
+        <responsive-button 
+          *ngIf="!enableEditEmail" 
+          icon="pencil" 
+          primary="true" 
+          (click)="enableEditEmail=true">
+          Change
+        </responsive-button>
+        <!-- /Change Email Button -->
+        <!-- Close Button -->
+        <responsive-button 
+          *ngIf="enableEditEmail" 
+          icon="times" 
+          color="yellow"
+          (click)="enableEditEmail=false">
+          Close
+        </responsive-button>
+        <!-- /Close Button -->
+      </div>
+
+      <div class="content">
+        <h4 class="header">Email</h4>
+        <div class="description">johndoe@example.com</div>
+      </div>
+    </div>
+    <!-- /Email -->
+
+    <!-- Email Edit Form -->
+    <div class="item" *ngIf="enableEditEmail">
+      <!-- Change Email Form -->
+      <form class="ui form">
+        <div class="equal width fields">
+
+          <div class="required field">
+            <label for="email">New Email</label>
+            <input type="text" name="email" placeholder="johndoe@example.com">
+          </div>
+
+          <div class="required field">
+            <label for="password">Password</label>
+            <input type="password" name="password" placeholder="Enter your current password.">
+          </div>
+        </div>
+        <button class="ui primary right labeled icon button">
+          <i class="sync icon"></i>
+          Update
+        </button>
+      </form>
+    </div>
+    <!-- /Email Edit Form -->
+
+    <div class="seperator cover"></div>
+
+    <!-- Password -->
+    <div class="item">
+        <div class="right floated content">
+          <!-- Change Password Button -->
+          <responsive-button 
+            *ngIf="!enableEditPassword" 
+            icon="pencil" 
+            primary="true" 
+            (click)="enableEditPassword=true">
+            Change
+          </responsive-button>
+          <!-- /Change Password Button -->
+          <!-- Close Button -->
+          <responsive-button 
+            *ngIf="enableEditPassword" 
+            icon="times" 
+            color="yellow"
+            (click)="enableEditPassword=false">
+            Close
+          </responsive-button>
+          <!-- /Close Button -->
+        </div>
+
+      <div class="content">
+        <h4 class="header">Password</h4>
+        <div class="description">Last changed on 20th June, 2018</div>
+      </div>
+
+    </div>
+    <!-- /Password -->
+
+
+    <!-- Email Edit Form -->
+    <div class="item" *ngIf="enableEditPassword">
+      <!-- Change Email Form -->
+      <form class="ui form">
+
+        <div class="required field">
+          <label for="cur_password">Current Password</label>
+          <input type="password" name="cur_password" placeholder="Enter your current password">
+        </div>
+
+        <div class="required field">
+          <label for="password">New Password</label>
+          <input type="password" name="password" placeholder="Enter the new password.">
+        </div>
+
+        <div class="required field">
+          <label>Re-type New Password</label>
+          <input type="password" placeholder="Enter the new password once more.">
+        </div>
+
+        <button class="ui primary right labeled icon button">
+          <i class="sync icon"></i>
+          Update
+        </button>
+      </form>
+    </div>
+    <!-- /Email Edit Form -->
+
+  </div>
+
+
+</div>
+<!-- /Login Details -->
+
+
+<!-- /Login and Security -->

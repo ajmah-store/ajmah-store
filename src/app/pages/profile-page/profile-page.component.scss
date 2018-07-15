@@ -1,0 +1,22 @@
+#profilePage > .grid {
+    margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+    #sidebar.fixed {
+        width: inherit;
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    #sidebar {
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 0;
+    
+        &.fixed {
+            left: 0 !important;
+        }
+    }
+}

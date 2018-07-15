@@ -1,0 +1,28 @@
+<div id="profilePage" class="page">
+  <div class="ui stackable grid">
+    <div class="four wide column" style="padding:0;">
+      <div class="ui basic segment" id="sidebar">
+
+        <!-- Menu visible only on mobiles -->
+        <div class="ui mobile-visible evenly divided item mini labeled icon menu">
+            <a *ngFor="let link of sidebar_links" [routerLink]="link.href" routerLinkActive="active" class="item">
+              <i class="icon" [ngClass]="link.icon"></i>
+              {{link.label}}
+            </a>
+        </div>
+        
+        <!-- Menu invisible on mobiles -->
+        <div class="ui large fluid vertical pointing mobile-hide menu">
+          <a *ngFor="let link of sidebar_links" [routerLink]="link.href" routerLinkActive="active" class="item">
+            <i class="icon" [ngClass]="link.icon"></i>
+            {{link.label}}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="twelve wide column" id="profile-content">
+        <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

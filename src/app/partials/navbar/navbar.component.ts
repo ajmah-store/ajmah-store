@@ -14,11 +14,11 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
 
-    this.initUi();
+    this.initUI();
 
   }
 
-  initUi() {
+  initUI() {
     $('#navbar-search')
     .search({
       // source : content,
@@ -32,6 +32,11 @@ export class NavbarComponent implements OnInit {
     });
 
     $('#navbar-dropdown').dropdown();
+
+    //sticky navbar
+    $('#navbar').visibility({
+      type: 'fixed'
+    });
   }
 
 }

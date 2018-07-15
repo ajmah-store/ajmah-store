@@ -2,18 +2,20 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    width: 100vw;
+    width: 100%;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     overflow: hidden;
 }
 
-
-#aj-main-content {
+#aj-scroll-content {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     overflow-y: auto;
+}
+
+#aj-router-content {
+    margin: auto 0;
 }
