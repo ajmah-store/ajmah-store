@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { profile_menu } from '../../constants';
+import { profile_menu, REGEXP } from '../../constants';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-profile-page',
@@ -10,12 +11,18 @@ export class ProfilePageComponent implements OnInit {
 
   sidebar_links = profile_menu;
 
-  constructor() { }
+  //form groups
+  profileForm: FormGroup;
+
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
 
     //initialize Semantic UI Components
     this.initUI();
+
+    //create profile form group
+    this.createProfileForm();
   }
 
   initUI() {
@@ -24,6 +31,17 @@ export class ProfilePageComponent implements OnInit {
       offset: $('#navbar').height()+28
     });
 
+  }
+
+  createProfileForm() {
+    this.profileForm = this.fb.group({
+      'first_name': ['', Validators.compose([Validators.required, Validators.pattern(REGEXP.name)])],
+      'last_name': ['', Validators.compose([Validators.required, Validators.pattern(REGEXP.name)])],
+      'email': ['', Validators.compose([Validators.required, Validators.pattern(REGEXP.email)])],
+      'phone': ['', Validators.compose([Validators.required, Validators.pattern(REGEXP.phone)])],
+      'gender': 'male',
+      'dob': ''
+    });
   }
 
 }

@@ -40,17 +40,17 @@
     <!-- Email Edit Form -->
     <div class="item" *ngIf="enableEditEmail">
       <!-- Change Email Form -->
-      <form class="ui form">
+      <form class="ui form" [formGroup]="changeEmailForm">
         <div class="equal width fields">
 
           <div class="required field">
             <label for="email">New Email</label>
-            <input type="text" name="email" placeholder="johndoe@example.com">
+            <input type="text" formControlName="email" placeholder="johndoe@example.com">
           </div>
 
           <div class="required field">
             <label for="password">Password</label>
-            <input type="password" name="password" placeholder="Enter your current password.">
+            <input type="password" formControlName="password" placeholder="Enter your current password.">
           </div>
         </div>
         <button class="ui primary right labeled icon button">
@@ -98,21 +98,21 @@
     <!-- Email Edit Form -->
     <div class="item" *ngIf="enableEditPassword">
       <!-- Change Email Form -->
-      <form class="ui form">
+      <form class="ui form" [formGroup]="changePasswordForm">
 
         <div class="required field">
           <label for="cur_password">Current Password</label>
-          <input type="password" name="cur_password" placeholder="Enter your current password">
+          <input type="password" formControlName="cur_password" placeholder="Enter your current password">
         </div>
 
         <div class="required field">
           <label for="password">New Password</label>
-          <input type="password" name="password" placeholder="Enter the new password.">
+          <input type="password" formControlName="password" placeholder="Enter the new password.">
         </div>
 
         <div class="required field">
-          <label>Re-type New Password</label>
-          <input type="password" placeholder="Enter the new password once more.">
+          <label for="re_password">Re-type New Password</label>
+          <input type="password" formControlName="re_password" placeholder="Enter the new password once more.">
         </div>
 
         <button class="ui primary right labeled icon button">

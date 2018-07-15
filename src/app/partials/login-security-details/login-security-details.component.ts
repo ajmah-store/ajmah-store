@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, state, style, query, animate } from '@angular/animations';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { REGEXP } from '../../constants';
 
 @Component({
   selector: 'app-login-security-details',
@@ -22,9 +24,32 @@ export class LoginSecurityDetailsComponent implements OnInit {
   enableEditEmail = false;
   enableEditPassword = false;
 
-  constructor() { }
+  //formGroups
+  changeEmailForm: FormGroup;
+  changePasswordForm: FormGroup;
+
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+
+    //init formgroups
+    this.createEmailForm();
+    this.createPasswordForm();
+  }
+
+  createEmailForm() {
+    this.changeEmailForm = this.fb.group({
+      'email': ['', Validators.compose([Validators.required, Validators.pattern(REGEXP.email)])],
+      'password': ['', Validators.compose([Validators.required, Validators.minLength(8)])]
+    });
+  }
+
+  createPasswordForm() {
+    this.changePasswordForm = this.fb.group({
+      'cur_password': ['', Validators.compose([Validators.required, Validators.minLength(8)])],
+      'password': ['', Validators.compose([Validators.required, Validators.minLength(8)])],
+      're_password': ['', Validators.compose([Validators.required, Validators.minLength(8)])]
+    });
   }
 
 }
