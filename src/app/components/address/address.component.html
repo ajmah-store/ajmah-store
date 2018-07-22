@@ -1,0 +1,20 @@
+<div class="ui fluid card" *ngIf="address">
+  <div class="content">
+    <div class="right floated meta"><i class="icon" [ngClass]="typeIcon"></i></div>
+    <div class="header">{{ address.name }}</div>
+    <div class="meta">{{ address.phone }}</div>
+    <div class="description">
+      <div>{{ address.building }}, {{ address.locality }}<span *ngIf="address.landmark">, {{ address.landmark }}</span></div>
+      <div>{{ address.city }}, {{ address.state }} </div>
+    </div>
+  </div>
+
+  <!-- Action buttons -->
+  <div class="extra content flex">
+    <responsive-button icon="times" class="ml-auto" (click)="emitRemove()">Remove</responsive-button>
+    <responsive-button icon="pencil" color="blue" (click)="emitEdit()">Edit</responsive-button>
+  </div>
+  <!-- /Action buttons -->
+</div>
+
+<!-- building, locality, landmark, city, state -->

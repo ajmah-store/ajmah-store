@@ -9,13 +9,32 @@
     overflow: hidden;
 }
 
-#aj-scroll-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-}
+// #aj-scroll-content {
+//     flex: 1;
+//     display: flex;
+//     flex-direction: column;
+//     overflow-y: auto;
+// }
 
 #aj-router-content {
     margin: auto 0;
+}
+
+#alert-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    position: fixed;
+    .message {
+        margin: 14px 28px;
+        width: calc(100% - 56px);
+        transition: all 0.3s ease-in-out;
+    }
+
+    &.fixed {
+        .message {
+            width: 50%;
+            opacity: 0.7;
+        }
+    }
 }

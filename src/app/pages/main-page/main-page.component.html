@@ -1,9 +1,24 @@
 <div class="main-wrapper">
   <app-navbar></app-navbar>
+
+  <!-- Alert -->
+  <div id="alert-container" [@alertAnimation]="alert$ | async">
+    <div class="ui icon message" *ngIf="(alert$ | async) as alert" [ngClass]="alert.type">
+        <i class="icon" [ngClass]="alert.icon"></i>
+        <i class="close icon" (click)="dismissAlert(alert)"></i>
+        <div class="content">
+          <div class="header">
+            {{alert.title}}
+          </div>
+          <p>{{alert.content}}</p>
+        </div>
+      </div>
+  </div>
+  <!-- /Alert -->
+
   <main id="aj-scroll-content">
-    <div id="aj-router-content">
-        <router-outlet></router-outlet>
-    </div>
+      <router-outlet></router-outlet>
     <app-footer></app-footer>
   </main>
+
 </div>

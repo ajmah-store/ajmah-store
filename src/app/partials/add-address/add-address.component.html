@@ -1,0 +1,96 @@
+<h2 class="ui header">Add Address</h2>
+<form class="ui fluid form" [formGroup]="addressForm" [class.loading]="addressFormIsLoading">
+  
+  <div class="equal width fields">
+
+    <!-- Name -->
+    <div class="required field" [class.error]="isInvalid('name')">
+      <label for="name">Name</label>
+      <input type="text" formControlName="name" placeholder="John Doe">
+    </div>
+    <!-- /Name -->
+
+    <!-- Contact Number -->
+    <div class="required field" [class.error]="isInvalid('phone')">
+      <label for="phone">Contact Number</label>
+      <input type="text" formControlName="phone" placeholder="xxxx xxx xxx">
+    </div>
+    <!-- /Contact Number -->
+
+  </div>
+
+  <div class="equal width fields">
+
+    <!-- Building -->
+    <div class="required field" [class.error]="isInvalid('building')">
+      <label for="building">Building</label>
+      <input type="text" formControlName="building" placeholder="Flat no., Building name">
+    </div>
+    <!-- /Building -->
+
+    <!-- Locality -->
+    <div class="required field" [class.error]="isInvalid('locality')">
+      <label for="locality">Locality</label>
+      <input type="text" formControlName="locality" placeholder="Locality, Area or Street">
+    </div>
+    <!-- /Locality -->
+
+  </div>
+
+  <div class="equal width fields">
+
+    <!-- Landmark -->
+    <div class="field" [class.error]="isInvalid('landmark')">
+        <label for="landmark">Landmark</label>
+        <input type="text" formControlName="landmark" placeholder="Near Okaz Theatre, Opposite Urban Plaza etc.">
+      </div>
+      <!-- /Landmark -->
+  
+      <!-- City -->
+      <div class="required field" [class.error]="isInvalid('city')">
+        <label for="city">City</label>
+        <input type="text" formControlName="city" placeholder="Palakkad">
+      </div>
+      <!-- /City -->
+
+  </div>
+
+  <div class="equal width fields">
+
+    <!-- Type -->
+    <div class="required field" [class.error]="isInvalid('type')">
+      <label for="type">Type</label>
+      <select class="dropdown" formControlName="type">
+        <option value="home">
+          <i class="home icon"></i>Home
+        </option>
+        <option value="office">
+          <i class="building icon"></i>Office
+        </option>
+      </select>
+    </div>
+    <!-- /Type -->
+
+    <!-- Landmark -->
+    <div class="required field" [class.error]="isInvalid('pin')">
+      <label for="pin">PIN</label>
+      <input type="text" formControlName="pin" placeholder="6 digit pin code">
+    </div>
+    <!-- /Landmark -->
+
+    <!-- City -->
+    <div class="required field" [class.error]="isInvalid('state')">
+      <label for="state">State</label>
+      <input type="text" formControlName="state" placeholder="Kerala">
+    </div>
+    <!-- /City -->
+  
+  </div>
+
+  <div class="ui center aligned basic segment">
+    <button class="ui primary labeled icon button" (click)="addAddress()">
+      <i class="plus icon"></i> Add Address
+    </button>
+  </div>
+
+</form>

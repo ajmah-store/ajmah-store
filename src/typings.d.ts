@@ -1,6 +1,5 @@
 //jQuery
 declare const $;
-declare const jQuery;
 
 /**
  * Croppie Plugin

@@ -1,28 +1,39 @@
 <div id="loginPage" class="page hasGrid">
     <div class="ui stackable two column grid">
         <div id="loginColumn" class="column aj-container">
-            <div class="ui card fluid">
-                <div class="content">
-                    <div class="ui center aligned header text-upper">Login</div>
-                </div>
-                <div class="content">
-                    <!-- Login Form -->
-                    <form class="ui large form" [formGroup]="loginForm">
-                        <div class="required field">
-                            <label>Email</label>
-                            <input type="email" formControlName="email" placeholder="Email">
-                        </div>
-                        <div class="required field">
-                            <label>Password</label>
-                            <input type="password" formControlName="password" placeholder="Password">
-                        </div>
-                        <div class="spacer"></div>
-                        <div class="center aligned">
-                            <button class="ui button primary right labeled icon" type="submit"><i class="sign-in icon"></i> Login</button>
-                        </div>
-                    </form><!-- /Login Form-->
-                </div><!-- /content-->
-            </div><!-- /card-->
+            
+            <h3 class="ui top attached center aligned text-upper header">Login</h3>
+            <div class="ui attached segment" [class.loading]="loginFormIsLoading">
+
+                <!-- Login Form -->
+                <form class="ui large form" [formGroup]="loginForm">
+                    <div class="required field" [class.error]="isInvalid(loginForm.controls.email)">
+                        <label>Email</label>
+                        <input type="email" formControlName="email" placeholder="Email">
+                    </div>
+                    <div class="required field" [class.error]="isInvalid(loginForm.controls.password)">
+                        <label>Password</label>
+                        <input type="password" formControlName="password" placeholder="Password">
+                    </div>
+                    <div class="ui center aligned basic segment">
+                        <button 
+                            class="ui button primary labeled icon" 
+                            type="submit" 
+                            [disabled]="loginForm.invalid"
+                            (click)="login()">
+                            <i class="sign-in icon"></i> Login
+                        </button>
+                    </div>
+                </form><!-- /Login Form-->
+
+            </div>
+            <div class="ui bottom attached info flex message" >
+                <i class="help icon"></i>
+                Forgot your password? 
+                <button class="ui compact blue basic button ml-auto">
+                    Reset Password
+                </button>
+            </div>
                 
         </div> <!-- /loginColumn -->
 
@@ -32,47 +43,50 @@
     
         <div id="signupColumn" class="column aj-container">
             
-            <div class="ui card fluid">
-                <div class="content">
-                    <div class="ui center aligned header text-upper">Create Account</div>
-                </div>
-                <div class="content">
-                    <!-- Signup Form -->
-                    <form class="ui large form" [formGroup]="registerForm">
+            <h3 class="ui top attached center aligned text-upper header">Create Account</h3>
+            <div class="ui bottom attached segment" [class.loading]="registerFormIsLoading">
+                <!-- Signup Form -->
+                <form class="ui large form" [formGroup]="registerForm">
 
-                        <!-- Name Field Group -->
-                        <div class="equal width fields">
-                            <div class="required field">
-                                <label>First Name</label>
-                                <input type="text" formControlName="first_name" placeholder="John">
-                            </div>
+                    <!-- Name Field Group -->
+                    <div class="equal width fields">
+                        <div class="required field" [class.error]="isInvalid(registerForm.controls.first_name)">
+                            <label>First Name</label>
+                            <input type="text" formControlName="first_name" placeholder="John">
+                        </div>
 
-                            <div class="required field">
-                                <label>Last Name</label>
-                                <input type="text" formControlName="last_name" placeholder="Doe">
-                            </div>
+                        <div class="required field" [class.error]="isInvalid(registerForm.controls.last_name)">
+                            <label>Last Name</label>
+                            <input type="text" formControlName="last_name" placeholder="Doe">
                         </div>
-                        <!-- /Name Field Group -->
+                    </div>
+                    <!-- /Name Field Group -->
 
-                        <div class="required field">
-                            <label>Email</label>
-                            <input type="email" formControlName="email" placeholder="johndoe@example.com">
-                        </div>
-                        <div class="required field">
-                            <label>Contact Number</label>
-                            <input type="text" formControlName="phone" placeholder="xxxx xxx xxx">
-                        </div>
-                        <div class="required field">
-                            <label>Password</label>
-                            <input type="password" formControlName="password" placeholder="Minimum 8 characters">
-                        </div>
-                        <div class="spacer"></div>
-                        <div class="center aligned">
-                            <button class="ui button primary right labeled icon" type="submit"><i class="pencil icon"></i> Create Account</button>
-                        </div>
-                    </form><!-- /Signup Form-->
-                </div><!-- /content-->
-            </div><!-- /card-->
+                    <div class="required field" [class.error]="isInvalid(registerForm.controls.email)">
+                        <label>Email</label>
+                        <input type="email" formControlName="email" placeholder="johndoe@example.com">
+                    </div>
+                    <div class="required field" [class.error]="isInvalid(registerForm.controls.phone)">
+                        <label>Contact Number</label>
+                        <input type="text" formControlName="phone" placeholder="xxxx xxx xxx">
+                    </div>
+                    <div class="required field" [class.error]="isInvalid(registerForm.controls.password)">
+                        <label>Password</label>
+                        <input type="password" formControlName="password" placeholder="Minimum 8 characters">
+                    </div>
+                    <div class="spacer"></div>
+                    <div class="ui center aligned basic segment">
+                        <button 
+                            class="ui button primary labeled icon" 
+                            type="submit"
+                            [disabled]="registerForm.invalid"
+                            (click)="createAccount()">
+                            <i class="pencil icon"></i> Create Account
+                        </button>
+                    </div>
+                </form><!-- /Signup Form-->
+
+            </div>
 
         </div><!-- /signupColumn -->
     </div>

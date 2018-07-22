@@ -11,6 +11,7 @@ export class ResponsiveButtonComponent implements OnInit {
   @Input() primary: boolean;
   @Input() color: string;
   @Input() right: boolean = false;
+  @Input() loading: boolean = false;
 
   @Output() click = new EventEmitter<any>();
 
@@ -28,6 +29,7 @@ export class ResponsiveButtonComponent implements OnInit {
       primary: this.primary,
       colored: !!this.color,
       right: this.right,
+      loading: this.loading,
       ...this.getColor()
     };
   }

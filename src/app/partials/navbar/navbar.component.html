@@ -1,18 +1,9 @@
 <div id="navbar" class="ui inverted segment">
     <div class="ui inverted secondary menu">
-        <div id="navbar-dropdown" class="ui icon top left pointing dropdown primary button mobile-visible">
-            <i class="bars icon"></i>
-            <div class="menu">
-                <a *ngFor="let link of menuLinks" [routerLink]="link.href" routerLinkActive="active" class="item">
-                    <i [class]="link.icon + ' icon'"></i>
-                    {{link.label}}
-                </a>
-            </div>
-        </div>
 
-        <!-- <div class="item">
-            <img src="assets/logo_white.svg">
-        </div> -->
+        <div class="item">
+            <img src="assets/logo_white.svg"> <span class="text-upper mobile-hide">AJMAH</span>
+        </div>
 
         <!-- menu desktop -->
         <div class="menu mobile-hide">
@@ -33,16 +24,56 @@
         </div>
         <!-- /search -->
 
+        <!-- Mobile Dropdown -->
+        <div class="ui icon top right pointing dropdown primary item mobile-visible m-auto">
+            <i class="bars icon"></i>
+            <div class="menu">
+                <a *ngFor="let link of menuLinks" [routerLink]="link.href" routerLinkActive="active" class="item">
+                    <i class="icon" [ngClass]="link.icon"></i>
+                    {{link.label}}
+                </a>
+                <div class="divider"></div>
+                <a *ngFor="let link of userLinks" [routerLink]="link.href" routerLinkActive="active" class="item" [class.hidden]="! authenticated | async">
+                    <i class="icon" [ngClass]="link.icon"></i>
+                    {{link.label}}
+                </a>
+                <a class="item" (click)="logout()">
+                    <i class="sign-out icon"></i> Logout
+                </a>
+            </div>
+        </div>
+        <!-- /Mobile Dropdown -->
+
         <!-- right -->
         <div class="right menu mobile-hide">
-            <a routerLink="login" routerLinkActive="active" class="item">
+            <a routerLink="login" routerLinkActive="active" class="item" *ngIf="!(authenticated | async)">
                 <i class="sign-in icon"></i>
                 Login/Signup
             </a>
-            <a routerLink="profile" routerLinkActive="active" class="item">
+            <!-- <a routerLink="profile" routerLinkActive="active" class="item">
                 <img src="assets/avatar.jpg" class="ui avatar image">
                 <span>John Doe</span>
-            </a>
+            </a> -->
+
+            <div class="ui top pointing dropdown item" [class.hidden]="!(authenticated | async)">
+                <div class="text">
+                    <span *ngIf="currentUser">
+                        <img [src]="currentUser.photoURL || 'assets/avatar.jpg'" class="ui avatar image">
+                        {{currentUser.first_name}} {{currentUser.last_name}}
+                    </span>
+                </div>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <a *ngFor="let link of userLinks" [routerLink]="link.href" routerLinkActive="active" class="item">
+                        <i class="icon" [ngClass]="link.icon"></i>
+                        {{link.label}}
+                    </a>
+                    <a class="item" (click)="logout()">
+                        <i class="sign-out icon"></i> Logout
+                    </a>
+                </div>
+            </div>
+
         </div>
         <!-- /right -->
     </div>

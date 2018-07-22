@@ -1,3 +1,41 @@
-<p>
-  my-address-page works!
-</p>
+<h2 class="ui top attached header">
+  Addresses
+</h2>
+<div class="ui attached secondary padded segment" id="addressList" *ngIf="addresses && !addresses.isEmpty()" [class.loading]="!addresses">
+  <div class="ui stackable two column padded grid">
+    <div class="column" *ngFor="let address of addresses.toArray()">
+        <app-address [address]="address"></app-address>
+    </div>
+  </div>
+</div>
+
+<div class="ui secondary attached segment" *ngIf="!addresses || addresses.isEmpty()">
+
+  <!-- Placeholder -->
+  <div class="placeholder">
+    <h2 class="ui icon header">
+      <i class="address book outline icon"></i>
+      <div class="content">
+        Blank Address Book!
+        <div class="sub header">Add frequently used addresses here for faster checkouts.</div>
+      </div>
+    </h2>
+  </div>
+  <!-- /Placeholder -->
+
+</div>
+
+<div class="ui attached segment" id="addAddressSegment" *ngIf="addAddressOpen" [@addressAnimation]="addAddressOpen">
+  <app-add-address></app-add-address>
+</div>
+
+
+<div class="ui bottom attached center aligned segment">
+  <button class="ui primary labeled icon button" (click)="addAddressOpen = true" *ngIf="!addAddressOpen">
+    <i class="address card icon"></i> New Address
+  </button>
+
+  <button class="ui labeled icon button" (click)="addAddressOpen = false" *ngIf="addAddressOpen">
+      <i class="chevron up icon"></i> Collapse
+    </button>
+</div>

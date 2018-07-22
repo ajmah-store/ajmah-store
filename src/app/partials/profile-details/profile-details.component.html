@@ -3,16 +3,15 @@
 <div class="ui mobile reversed stackable grid">
   <div class="ten wide column">
     <form class="ui equal width form" [formGroup]="profileForm">
-
       <!-- Name Field Group -->
       <div class="equal width fields">
-        <div class="required field">
-          <label for="first-name">First Name</label>
-          <input type="text" placeholder="John">
+        <div class="required field" [class.error]="isInvalid('first_name')">
+          <label for="first_name">First Name</label>
+          <input type="text" formControlName="first_name" placeholder="John">
         </div>
-        <div class="required field">
-          <label for="last-name">Last Name</label>
-          <input type="text" placeholder="Doe">
+        <div class="required field" [class.error]="isInvalid('last_name')">
+          <label for="last_name">Last Name</label>
+          <input type="text" formControlName="last_name" placeholder="Doe">
         </div>
       </div>
       <!-- /Name -->
@@ -20,28 +19,26 @@
       <!-- DOB Gender -->
       <div class="equal width fields">
         <!-- Gender -->
-        <div class="field">
+        <div class="field" [class.error]="isInvalid('gender')">
           <label for="gender">Gender</label>
-          <select name="gender" class="dropdown">
+          <select class="dropdown" formControlName="gender">
             <option value="male">
-              <i class="mars icon"></i>Male</option>
+              <i class="mars icon"></i>Male
+            </option>
             <option value="female">
-              <i class="venus icon"></i>Female</option>
+              <i class="venus icon"></i>Female
+            </option>
             <option value="other">
-              <i class="transgender alternate icon"></i>Other</option>
+              <i class="transgender alternate icon"></i>Other
+            </option>
           </select>
         </div>
         <!-- /Gender -->
 
         <!-- DOB -->
-        <div class="field">
+        <div class="field" [class.error]="isInvalid('dob')">
           <label for="dob">Date of Birth</label>
-          <div class="ui calendar date" id="dob_calender">
-            <div class="ui input left icon">
-              <i class="calendar icon"></i>
-              <input type="text" placeholder="January 1, 2018">
-            </div>
-          </div>
+          <input-calendar placeholder="January 1, 1991" type="date" formControlName="dob"></input-calendar>
         </div>
         <!-- /DOB -->
 
@@ -49,15 +46,15 @@
       <!-- DOB Gender -->
 
       <!-- Phone -->
-      <div class="required field">
+      <div class="required field" [class.error]="isInvalid('phone')">
         <label for="phone">Contact No.</label>
-        <input type="text" name="phone" placeholder="xxxx xxx xxx">
+        <input type="text" formControlName="phone" placeholder="xxxx xxx xxx">
       </div>
       <!-- /Phone -->
-      <div class="ui primary right labeled icon button" [class.loading]="formIsLoading">
+      <button class="ui primary right labeled icon button" [class.loading]="formIsLoading" (click)="updateProfile()" [disabled]="profileForm.invalid">
         <i class="sync icon"></i>
         Update Profile
-      </div>
+      </button>
     </form>
     <!-- Profile Form -->
   </div>
@@ -74,14 +71,14 @@
         (click)="dim('#profile-pic-dimmer')" 
         (mouseleave)="reveal('#profile-pic-dimmer')">
 
-        <img src="assets/avatar.jpg" alt="Profile Picture" class="ui small centered circular image" #profilePicture>
+        <img [src]="user.photoURL || 'assets/avatar.jpg'" onerror="this.src='assets/avatar.jpg'" alt="Profile Picture" class="ui small centered circular image" #profilePicture>
         <div class="ui dimmer" id="profile-pic-dimmer">
           <div class="content">
             <button class="ui inverted small button" (click)="browsePicture()">
               <!-- <i class="image icon"></i> -->
               Change
             </button>
-            <input type="file" #inputPicture hidden (change)="selectPicture($event.srcElement.files)">
+            <input type="file" accept="image/jpg" #inputPicture hidden (change)="selectPicture($event.srcElement.files)">
           </div>
         </div>
 

@@ -2,7 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import {ReactiveFormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from 'angularfire2/storage'
+import { firebase_config } from '../private/firebase.config'; 
+import { StoreModule } from './store/store.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
@@ -16,6 +23,9 @@ import { MyOrdersPageComponent } from './pages/my-orders-page/my-orders-page.com
 import { ProfileDetailsComponent } from './partials/profile-details/profile-details.component';
 import { LoginSecurityDetailsComponent } from './partials/login-security-details/login-security-details.component';
 import { ResponsiveButtonComponent } from './components/responsive-button/responsive-button.component';
+import { AddressComponent } from './components/address/address.component';
+import { AddAddressComponent } from './partials/add-address/add-address.component';
+import { InputCalendarComponent } from './components/input-calendar/input-calendar.component';
 
 @NgModule({
   declarations: [
@@ -30,13 +40,22 @@ import { ResponsiveButtonComponent } from './components/responsive-button/respon
     MyOrdersPageComponent,
     ProfileDetailsComponent,
     LoginSecurityDetailsComponent,
-    ResponsiveButtonComponent
+    ResponsiveButtonComponent,
+    AddressComponent,
+    AddAddressComponent,
+    InputCalendarComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(firebase_config),
+    AngularFireAuthModule,
+    AngularFirestoreModule.enablePersistence(),//offline data
+    AngularFireStorageModule,
+    StoreModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

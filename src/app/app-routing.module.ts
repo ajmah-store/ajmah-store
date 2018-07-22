@@ -6,6 +6,7 @@ import { ProfilePageComponent } from "./pages/profile-page/profile-page.componen
 import { MyAccountPageComponent } from "./pages/my-account-page/my-account-page.component";
 import { MyAddressPageComponent } from "./pages/my-address-page/my-address-page.component";
 import { MyOrdersPageComponent } from "./pages/my-orders-page/my-orders-page.component";
+import { AuthGuard } from "./guards/auth.guard";
 
 const routes: Routes = [
     {
@@ -19,6 +20,7 @@ const routes: Routes = [
             {
                 path: 'profile',
                 component: ProfilePageComponent,
+                canActivate: [AuthGuard],
                 children: [
                     {
                         path: 'my-account',

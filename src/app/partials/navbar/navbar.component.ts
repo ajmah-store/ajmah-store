@@ -1,23 +1,46 @@
-import { Component, OnInit } from '@angular/core';
-import { primary_menu } from '../../constants';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { primary_menu, user_menu } from '../../constants';
+import { AuthService } from '../../services/auth.service';
+import { User } from '../../models/user.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
 
   menuLinks = primary_menu;
+  userLinks = user_menu;
 
-  constructor() { }
+  currentUser: User;
+
+  //subscriptions
+  subscriptions = new Subscription();
+
+  constructor(
+    private auth: AuthService
+  ) { }
 
   ngOnInit() {
 
     this.initUI();
 
+    this.subscriptions.add(this.auth.currentUser$.subscribe(user => (this.currentUser = user)));
+
   }
 
+  //check authentucation
+  get authenticated() {
+
+    return this.auth.authState$;
+
+  }
+
+  /**
+   * Initialize Semantic-UI Components
+   */
   initUI() {
     $('#navbar-search')
     .search({
@@ -31,12 +54,24 @@ export class NavbarComponent implements OnInit {
       }
     });
 
-    $('#navbar-dropdown').dropdown();
+    $('.ui.dropdown').dropdown({
+      action: 'hide'
+    });
 
     //sticky navbar
     $('#navbar').visibility({
       type: 'fixed'
     });
+  }
+
+  //logout
+  logout() {
+    this.auth.logout();
+  }
+  
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
   }
 
 }

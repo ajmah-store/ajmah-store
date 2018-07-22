@@ -1,6 +1,26 @@
+@import "app/variables.scss";
+
 .spacer {
     display: block;
     height: 16px;
+}
+
+.placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 100;
+    opacity: 0.6;
+    height: 100%;
+}
+
+.blank {
+    display: block;
+    height: 1rem;
+}
+
+.hidden {
+    display: none !important;
 }
 
 .seperator {
@@ -21,7 +41,8 @@
 }
 
 .flex {
-    display: flex;
+    display: flex !important;
+    align-items: center;
 }
 
 .aj-container {
@@ -49,6 +70,13 @@
 .pull-left {
     margin-right: auto;
 }
+
+//auto margins
+.m-auto { margin: auto !important; }
+.ml-auto { margin-left: auto !important; }
+.mr-auto { margin-right: auto !important; }
+.mt-auto { margin-top: auto !important; }
+.mb-auto { margin-bottom: auto !important; }
 
 //Fix for vertical divider
 .ui.grid>.column+.divider-wrap, .ui.grid>.row>.column+.divider-wrap {

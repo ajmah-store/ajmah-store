@@ -32,7 +32,7 @@
 
       <div class="content">
         <h4 class="header">Email</h4>
-        <div class="description">johndoe@example.com</div>
+        <div class="description">{{user.email}}</div>
       </div>
     </div>
     <!-- /Email -->
@@ -43,17 +43,17 @@
       <form class="ui form" [formGroup]="changeEmailForm">
         <div class="equal width fields">
 
-          <div class="required field">
+          <div class="required field" [class.error]="isInvalid(changeEmailForm, 'email')">
             <label for="email">New Email</label>
             <input type="text" formControlName="email" placeholder="johndoe@example.com">
           </div>
 
-          <div class="required field">
+          <div class="required field" [class.error]="isInvalid(changeEmailForm, 'password')">
             <label for="password">Password</label>
             <input type="password" formControlName="password" placeholder="Enter your current password.">
           </div>
         </div>
-        <button class="ui primary right labeled icon button">
+        <button class="ui primary right labeled icon button" [disabled]="changeEmailForm.invalid" [class.loading]="emailFormIsLoading" (click)="updateEmail()">
           <i class="sync icon"></i>
           Update
         </button>
@@ -100,22 +100,22 @@
       <!-- Change Email Form -->
       <form class="ui form" [formGroup]="changePasswordForm">
 
-        <div class="required field">
+        <div class="required field" [class.error]="isInvalid(changePasswordForm, 'cur_password')">
           <label for="cur_password">Current Password</label>
           <input type="password" formControlName="cur_password" placeholder="Enter your current password">
         </div>
 
-        <div class="required field">
+        <div class="required field" [class.error]="isInvalid(changePasswordForm, 'password')">
           <label for="password">New Password</label>
           <input type="password" formControlName="password" placeholder="Enter the new password.">
         </div>
 
-        <div class="required field">
+        <div class="required field" [class.error]="isInvalid(changePasswordForm, 're_password') || !match_password">
           <label for="re_password">Re-type New Password</label>
           <input type="password" formControlName="re_password" placeholder="Enter the new password once more.">
         </div>
 
-        <button class="ui primary right labeled icon button">
+        <button class="ui primary right labeled icon button" [class.loading]="passwordFormIsLoading" (click)="updatePassword()">
           <i class="sync icon"></i>
           Update
         </button>
