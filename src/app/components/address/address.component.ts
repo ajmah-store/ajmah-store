@@ -32,7 +32,7 @@ export class AddressComponent implements OnInit {
   }
 
   emitRemove() {
-    this.edit.emit(this.address);
+    this.remove.emit(this.address);
   }
 
 }

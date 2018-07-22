@@ -26,6 +26,8 @@ import { ResponsiveButtonComponent } from './components/responsive-button/respon
 import { AddressComponent } from './components/address/address.component';
 import { AddAddressComponent } from './partials/add-address/add-address.component';
 import { InputCalendarComponent } from './components/input-calendar/input-calendar.component';
+import { ConfirmComponent } from './components/confirm/confirm.component';
+import { EditAddressComponent } from './partials/edit-address/edit-address.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { InputCalendarComponent } from './components/input-calendar/input-calend
     AddressComponent,
     AddAddressComponent,
     InputCalendarComponent,
+    ConfirmComponent,
+    EditAddressComponent,
   ],
   imports: [
     BrowserModule,

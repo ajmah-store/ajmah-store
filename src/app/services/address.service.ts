@@ -107,7 +107,115 @@ export class AddressService {
         ));
       }
     ));
-  }
+  }//getAllAddress
+
+  /**
+   * Update a users address
+   * @param aid address id
+   * @param data partial details of address to be updated
+   */
+  async updateAddress(aid: any, data: Partial<Address>) {
+
+    try {
+
+      //invalid request
+      if(!aid || !data) throw new Error('Invalid request');
+
+      //get current user
+      const user = await this.auth.authState$.pipe(first(user => user!==undefined)).toPromise();
+
+      //if no user throw error
+      if(!user) throw new Error("You're not authorized to view this content.");
+
+      //update address
+      await this.db.collection(COLLECTIONS.USERS).doc(user.uid).collection(COLLECTIONS.ADDRESSES).doc(aid).update(data);
+
+      //alert success
+      const alert = {
+        type: ALERT_TYPES.SUCCESS,
+        title: `Address Updated` ,
+        content: `Your address has been updated successfully.(Note: Any orders placed to this address before updating will be delivered to the old address)`,
+        icon: 'address card'
+      };
+
+      this.store.dispatch(new CreateAlert(alert));
+
+      //dismiss alert after 3 seconds
+      setTimeout(() => this.store.dispatch(new DismissAlert(alert)), 3000);
+
+    }
+
+    catch(error) {
+
+      //alert error
+      const alert = {
+        type: ALERT_TYPES.ERROR,
+        title: 'Couldn\'t update address!',
+        content: error.message || error,
+        icon: 'exclamation circle'
+      };
+
+      this.store.dispatch(new CreateAlert(alert));
+
+      //dismiss alert after 3 seconds
+      setTimeout(() => this.store.dispatch(new DismissAlert(alert)), 3000);
+
+    }
+
+  }//update address
+
+  /**
+   * Remove an address from the current users address book
+   * @param address Address to be removed
+   */
+  async removeAddress(address: Address) {
+
+    try {
+
+      if(!address) throw new Error("Invalid request");
+
+      //get current user
+      const user = await this.auth.authState$.pipe(first(user => user!==undefined)).toPromise();
+
+      //if no user throw error
+      if(!user) throw new Error("You're not authorized to view this content.");
+
+      //remove address
+      await this.db.collection(COLLECTIONS.USERS).doc(user.uid).collection(COLLECTIONS.ADDRESSES).doc(address.id).delete()
+
+      //alert success
+      const alert = {
+        type: ALERT_TYPES.SUCCESS,
+        title: `Address Removed` ,
+        content: `The address of ${address.name} has been removed from your address book`,
+        icon: 'trash alternate'
+      };
+
+      this.store.dispatch(new CreateAlert(alert));
+
+      //dismiss alert after 3 seconds
+      setTimeout(() => this.store.dispatch(new DismissAlert(alert)), 3000);
+
+    }
+
+    catch(error) {
+
+       //alert error
+       const alert = {
+        type: ALERT_TYPES.ERROR,
+        title: 'Couldn\'t remove address!',
+        content: error.message || error,
+        icon: 'exclamation circle'
+      };
+
+      this.store.dispatch(new CreateAlert(alert));
+
+      //dismiss alert after 3 seconds
+      setTimeout(() => this.store.dispatch(new DismissAlert(alert)), 3000);
+
+    }
+
+  }//remove address
 
 
   // /**

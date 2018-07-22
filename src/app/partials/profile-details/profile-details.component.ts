@@ -51,6 +51,7 @@ export class ProfileDetailsComponent implements OnInit {
 
   }
 
+
   initUI() {
 
     //select dropdown
@@ -66,7 +67,14 @@ export class ProfileDetailsComponent implements OnInit {
           }
         )
       },
-    })
+    });
+
+    //lazy load profile picture
+    $(this.profilePicture.nativeElement).visibility({
+      type: 'image',
+      transition: 'fade in',
+      duration: 1000
+    });
 
   }
 

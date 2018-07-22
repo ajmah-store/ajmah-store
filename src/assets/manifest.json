@@ -1,0 +1,21 @@
+{
+    "short_name": "Ajmah",
+    "name": "Ajmah Store",
+    "icons": [
+        {
+        "src": "icons/icon-192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+        },
+        {
+        "src": "icons/icon-512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+        }
+    ],
+    "start_url": "/store/?source=pwa",
+    "background_color": "#F4F4F4",
+    "display": "standalone",
+    "scope": "/store/",
+    "theme_color": "#D82446"
+}

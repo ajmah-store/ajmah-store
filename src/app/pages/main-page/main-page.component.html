@@ -16,6 +16,10 @@
   </div>
   <!-- /Alert -->
 
+  <!-- Confirm -->
+  <app-confirm *ngIf="(confirm$ | async) as confirm" [confirm]="confirm"></app-confirm>
+  <!-- /Confirm -->
+
   <main id="aj-scroll-content">
       <router-outlet></router-outlet>
     <app-footer></app-footer>

@@ -1,15 +1,15 @@
 <h2 class="ui top attached header">
   Addresses
 </h2>
-<div class="ui attached secondary padded segment" id="addressList" *ngIf="addresses && !addresses.isEmpty()" [class.loading]="!addresses">
+<div class="ui attached secondary padded segment" id="addressList" *ngIf="addresses && !addresses.isEmpty()">
   <div class="ui stackable two column padded grid">
     <div class="column" *ngFor="let address of addresses.toArray()">
-        <app-address [address]="address"></app-address>
+        <app-address [address]="address" (edit)="editAddress = $event" (remove)="removeAddress($event)"></app-address>
     </div>
   </div>
 </div>
 
-<div class="ui secondary attached segment" *ngIf="!addresses || addresses.isEmpty()">
+<div class="ui secondary attached segment" *ngIf="!addresses || addresses.isEmpty()" [class.loading]="!addresses">
 
   <!-- Placeholder -->
   <div class="placeholder">
@@ -25,17 +25,23 @@
 
 </div>
 
+<div class="ui attached segment" id="editAddressSegment" *ngIf="editAddress" [@addressAnimation]="editAddress">
+  <button class="ui right floated basic small icon button" (click)="editAddress = null">
+    <i class="close icon"></i>
+  </button>
+  <app-edit-address [address]="editAddress"></app-edit-address>
+</div>
+
 <div class="ui attached segment" id="addAddressSegment" *ngIf="addAddressOpen" [@addressAnimation]="addAddressOpen">
+  <button class="ui right floated basic small icon button" (click)="addAddressOpen = false">
+    <i class="close icon"></i>
+  </button>
   <app-add-address></app-add-address>
 </div>
 
 
 <div class="ui bottom attached center aligned segment">
-  <button class="ui primary labeled icon button" (click)="addAddressOpen = true" *ngIf="!addAddressOpen">
+  <button class="ui primary labeled icon button" [disabled]="addAddressOpen" (click)="addAddressOpen = true">
     <i class="address card icon"></i> New Address
   </button>
-
-  <button class="ui labeled icon button" (click)="addAddressOpen = false" *ngIf="addAddressOpen">
-      <i class="chevron up icon"></i> Collapse
-    </button>
 </div>

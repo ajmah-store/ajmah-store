@@ -1,16 +1,19 @@
 import { Alert } from "../../models/alert.model";
 import { State, Selector, StateContext, Action } from "@ngxs/store";
-import { CreateAlert, DismissAlert } from "../actions/ui.actions";
+import { CreateAlert, DismissAlert, CreateConfirm, DismissConfirm } from "../actions/ui.actions";
 import { HistoryList } from "@arjunatlast/jsds";
+import { Confirm } from "../../models/confirm.model";
 
 export interface UIStateModel {
-    alert: Alert
+    alert: Alert;
+    confirm: Confirm;
 }
 
 @State<UIStateModel>({
     name: 'ui',
     defaults: {
-        alert: null
+        alert: null,
+        confirm: null
     }
 })
 export class UIState {
@@ -20,7 +23,12 @@ export class UIState {
         return state.alert;
     }
 
-    //alert
+    @Selector()
+    static getConfirm(state: UIStateModel) {
+        return state.confirm;
+    }
+
+    //create alert
     @Action(CreateAlert)
     createAlert(ctx: StateContext<UIStateModel>, {payload}: CreateAlert) {
 
@@ -30,7 +38,7 @@ export class UIState {
 
     }
 
-    //alert
+    //dismiss alert
     @Action(DismissAlert)
     dismissAlert(ctx: StateContext<UIStateModel>, {payload}: DismissAlert) {
 
@@ -39,4 +47,26 @@ export class UIState {
         })
 
     }
+
+    //create confirm
+    @Action(CreateConfirm)
+    createConfirm(ctx: StateContext<UIStateModel>, {payload}: CreateConfirm) {
+
+        ctx.patchState({
+            confirm: payload
+        });
+
+    }
+
+    //dismiss confirm
+    @Action(DismissConfirm)
+    dismissConfirm(ctx: StateContext<UIStateModel>, {payload}: DismissConfirm) {
+
+        ctx.patchState({
+            confirm: null
+        });
+        
+    }
+
+
 }

@@ -14,11 +14,11 @@
   </div>
   <!--/ Email Not Verified -->
 
-  <div class="ui extra padded top attached segment">
+  <div class="ui extra padded top attached segment" [class.loading]="!currentUser">
     <app-profile-details *ngIf="currentUser" [user]="currentUser"></app-profile-details>
   </div>
 
-  <div class="ui extra padded bottom attached segment">
+  <div class="ui extra padded bottom attached segment" [class.loading]="!currentUser">
     <app-login-security-details *ngIf="currentUser" [user]="currentUser"></app-login-security-details>
   </div>
 

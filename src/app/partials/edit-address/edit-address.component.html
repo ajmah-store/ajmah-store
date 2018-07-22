@@ -1,4 +1,4 @@
-<h2 class="ui header">Add Address</h2>
+<h2 class="ui header">Edit Address</h2>
 <form class="ui fluid form" [formGroup]="addressForm" [class.loading]="addressFormIsLoading">
   
   <div class="equal width fields">
@@ -88,8 +88,8 @@
   </div>
 
   <div class="ui center aligned basic segment">
-    <button class="ui green labeled icon button" (click)="addAddress()">
-      <i class="plus icon"></i> Add Address
+    <button class="ui blue labeled icon button" (click)="updateAddress()">
+      <i class="sync icon"></i> Update Address
     </button>
   </div>
 

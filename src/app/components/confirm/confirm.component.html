@@ -1,0 +1,16 @@
+<div class="ui small modal" #modal>
+  <div class="header">{{ confirm.title }}</div>
+  <div class="content">
+    <p>{{ confirm.content }}</p>
+  </div>
+  <div class="actions">
+    <button class="ui cancel button" [ngClass]="confirm.cancelButton.icon? 'labeled icon':''">
+      <i class="icon" *ngIf="confirm.cancelButton.icon" [ngClass]="confirm.cancelButton.icon"></i>
+      {{ confirm.cancelButton.text }}
+    </button>
+    <button class="ui positive button" [ngClass]="confirm.okButton.icon? 'labeled icon':''">
+      <i class="icon" *ngIf="confirm.okButton.icon" [ngClass]="confirm.okButton.icon"></i>
+      {{ confirm.okButton.text }}
+    </button>
+  </div>
+</div>

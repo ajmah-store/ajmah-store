@@ -5,6 +5,7 @@ import { Alert } from '../../models/alert.model';
 import { Observable } from 'rxjs';
 import { trigger, transition, query, animate, style } from '@angular/animations';
 import { DismissAlert } from '../../store/actions/ui.actions';
+import { Confirm } from '../../models/confirm.model';
 
 @Component({
   selector: 'app-main-page',
@@ -26,12 +27,17 @@ export class MainPageComponent implements OnInit {
 
   alert$: Observable<Alert>;
 
+  confirm$: Observable<Confirm>;
+
   constructor(private store: Store) { }
 
   ngOnInit() {
 
     //get alert
     this.alert$ = this.store.select(state => state.ui.alert);
+
+    //get confirm
+    this.confirm$ = this.store.select(state => state.ui.confirm);
 
     //initialize common semantic ui components
     this.initUI();
