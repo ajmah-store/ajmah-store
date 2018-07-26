@@ -1,0 +1,74 @@
+<div class="ui large modal" #cartModal>
+    <div class="header">My Cart</div>
+    
+    <div class="scrolling content">
+        <table class="ui celled unstackable table" *ngIf="cart && !cart.isEmpty()">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Rate</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr *ngFor="let item of cart.toArray()">
+                    <td> 
+                        <img [src]="item.product.featuredImageUrl" [alt]="item.product.name" class="ui avatar image mobile-hide">
+                        {{ item.product.name}} 
+                    </td>
+                    <td> {{ discountPrice(item.product) | currency:'INR' }} </td>
+                    <td>
+                        <div class="ui right labeled fluid input mobile-hide">
+                            <input autofocus="false" type="text" [value]="item.quantity" (keyup)="updateQuantity(item.product, $event.target.value)">
+                            <div class="ui basic label">{{item.product.unit}}</div>
+                        </div>
+                        <div class="ui fluid input mobile-visible">
+                            <input autofocus="false" type="text" pattern="[0-9]*" [value]="item.quantity" (keyup)="updateQuantity(item.product, $event.target.value)">
+                        </div>
+                    </td>
+                    <td> {{ totalPrice(item) | currency:'INR' }} </td>
+                </tr>
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th class="right aligned" colspan="3">Total</th>
+                    <th> {{ grandTotal() | currency:'INR' }} </th>
+                </tr>
+            </tfoot>
+        </table>
+
+        <div *ngIf="!cart || cart.isEmpty()">
+            <!-- Placeholder -->
+            <div class="placeholder">
+                <h2 class="ui icon header">
+                    <i class="cart arrow down icon"></i>
+                    <div class="content">
+                        Your Cart is Empty
+                        <div class="sub header">Add products to your cart to check out.</div>
+                    </div>
+                </h2>
+            </div>
+            <!-- /Placeholder -->
+        </div>
+
+    </div>
+
+    <div class="actions">
+
+        <button class="ui icon labeled cancel button">
+            <i class="close icon"></i> Close
+        </button>
+
+        <button class="ui icon labeled primary approve button" *ngIf="cart && !cart.isEmpty() && grandTotal() > 0">
+            <i class="clipboard check icon"></i>
+            Checkout
+        </button>
+
+    </div>
+
+    
+
+</div>

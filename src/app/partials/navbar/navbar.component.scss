@@ -3,8 +3,16 @@
 #navbar {
     background: $primary;
     border-radius: 0 !important;
-    z-index: 1000;
     width: 100%;
+
+    &.fixed {
+        position: fixed;
+        animation: dropdown 300ms ease-in;
+    }
+
+    .dropdown .menu {
+        .item { width: 100%; }
+    }
 
     #navbar-search {
         flex: 1;
@@ -12,4 +20,9 @@
             border-radius: 4px;
         }
     }
+}
+
+@keyframes dropdown {
+    from{ transform: translateY(-60px); opacity: 0; }
+    to{ transform: translateY(0px); opacity: 1; }
 }

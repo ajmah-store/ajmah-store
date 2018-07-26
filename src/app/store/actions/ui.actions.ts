@@ -22,3 +22,14 @@ export class DismissConfirm {
     static readonly type = "[UI] DismissConfirm";
     constructor(public payload: Confirm) {}
 }
+
+//cart
+export class OpenCart {
+    static readonly type = "[UI] OpenCart";
+    constructor() {}
+}
+
+export class CloseCart {
+    static readonly type = "[UI] CloseCart";
+    constructor() {}
+}

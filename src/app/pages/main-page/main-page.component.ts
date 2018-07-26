@@ -29,6 +29,8 @@ export class MainPageComponent implements OnInit {
 
   confirm$: Observable<Confirm>;
 
+  cartIsOpen$: Observable<boolean>;
+
   constructor(private store: Store) { }
 
   ngOnInit() {
@@ -38,6 +40,9 @@ export class MainPageComponent implements OnInit {
 
     //get confirm
     this.confirm$ = this.store.select(state => state.ui.confirm);
+
+    //get if cart is open
+    this.cartIsOpen$ = this.store.select(state => state.ui.cartIsOpen);
 
     //initialize common semantic ui components
     this.initUI();

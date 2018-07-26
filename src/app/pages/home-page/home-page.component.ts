@@ -3,9 +3,9 @@ import { ProductService } from '../../services/product.service';
 import { ArrayList } from '@arjunatlast/jsds';
 import { Product } from '../../models/product.model';
 import { Store } from '@ngxs/store';
-import { AddToCart } from '../../store/actions/cart.actions';
 import { Alert, ALERT_TYPES } from '../../models/alert.model';
 import { CreateAlert, DismissAlert } from '../../store/actions/ui.actions';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-home-page',
@@ -18,7 +18,8 @@ export class HomePageComponent implements OnInit {
 
   constructor(
     private ps: ProductService,
-    private store: Store
+    private store: Store,
+    private cart: CartService
   ) { }
 
   ngOnInit() {
@@ -58,20 +59,7 @@ export class HomePageComponent implements OnInit {
 
   addToCart(product: Product) {
 
-    this.store.dispatch(new AddToCart(product, 1));
-
-    //alert
-    const alert: Alert = {
-      type: ALERT_TYPES.INFO,
-      title: `New Item in Cart`,
-      content: `${product.name} has been added to your cart. Open your cart and click checkout to complete shopping.`,
-      icon: 'cart add'
-    }
-
-    this.store.dispatch(new CreateAlert(alert));
-
-    //dismiss after 3 seconds
-    setTimeout(()=>this.store.dispatch(new DismissAlert(alert)), 3000);
+    this.cart.addToCart(product);
 
   }
 

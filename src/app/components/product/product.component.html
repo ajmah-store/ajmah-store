@@ -17,6 +17,9 @@
         {{ discountPrice | currency:'INR' }}
   </div>
   <div class="center aligned extra content">
-    <responsive-button primary="true" icon="cart add" (click)="emitAdd()">Add to Cart</responsive-button>
+    <button class="ui labeled primary icon button" (click)="emitAdd()">
+      <i class="cart plus icon"></i>
+      Add to Cart
+    </button>
   </div>
 </div>

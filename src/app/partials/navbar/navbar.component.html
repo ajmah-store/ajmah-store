@@ -24,6 +24,10 @@
         </div>
         <!-- /search -->
 
+        <a class=" mobile-visible item" (click)="openCart()">
+            <i class="shopping cart icon"></i>
+        </a>
+
         <!-- Mobile Dropdown -->
         <div class="ui icon top right pointing dropdown primary item mobile-visible m-auto">
             <i class="bars icon"></i>
@@ -67,6 +71,9 @@
                     <a *ngFor="let link of userLinks" [routerLink]="link.href" routerLinkActive="active" class="item">
                         <i class="icon" [ngClass]="link.icon"></i>
                         {{link.label}}
+                    </a>
+                    <a class="item" (click)="openCart()">
+                        <i class="shopping cart icon"></i> My Cart
                     </a>
                     <a class="item" (click)="logout()">
                         <i class="sign-out icon"></i> Logout

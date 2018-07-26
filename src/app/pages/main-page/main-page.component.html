@@ -1,6 +1,6 @@
 <div class="main-wrapper">
   <app-navbar></app-navbar>
-
+  <app-cart [show]="cartIsOpen$ | async"></app-cart>
   <!-- Alert -->
   <div id="alert-container" [@alertAnimation]="alert$ | async">
     <div class="ui icon message" *ngIf="(alert$ | async) as alert" [ngClass]="alert.type">

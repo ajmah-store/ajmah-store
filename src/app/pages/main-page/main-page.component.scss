@@ -25,16 +25,24 @@
     justify-content: flex-end;
     width: 100%;
     position: fixed;
+    z-index: 1000;
     .message {
         margin: 14px 28px;
         width: calc(100% - 56px);
         transition: all 0.3s ease-in-out;
     }
 
+    @media screen and (max-width: 767px) {
+        .message, &.fixed .message {
+            width: 100% !important;
+        }
+
+    }
+
     &.fixed {
         .message {
             width: 50%;
-            opacity: 0.7;
+            opacity: 0.9;
         }
     }
 }

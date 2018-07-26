@@ -1,19 +1,21 @@
 import { Alert } from "../../models/alert.model";
 import { State, Selector, StateContext, Action } from "@ngxs/store";
-import { CreateAlert, DismissAlert, CreateConfirm, DismissConfirm } from "../actions/ui.actions";
+import { CreateAlert, DismissAlert, CreateConfirm, DismissConfirm, OpenCart, CloseCart } from "../actions/ui.actions";
 import { HistoryList } from "@arjunatlast/jsds";
 import { Confirm } from "../../models/confirm.model";
 
 export interface UIStateModel {
     alert: Alert;
     confirm: Confirm;
+    cartIsOpen: boolean;
 }
 
 @State<UIStateModel>({
     name: 'ui',
     defaults: {
         alert: null,
-        confirm: null
+        confirm: null,
+        cartIsOpen: false
     }
 })
 export class UIState {
@@ -26,6 +28,11 @@ export class UIState {
     @Selector()
     static getConfirm(state: UIStateModel) {
         return state.confirm;
+    }
+
+    @Selector()
+    static getCartIsOpen(state: UIStateModel) {
+        return state.cartIsOpen;
     }
 
     //create alert
@@ -65,6 +72,26 @@ export class UIState {
         ctx.patchState({
             confirm: null
         });
+        
+    }
+
+    //open cart
+    @Action(OpenCart)
+    openCart(ctx: StateContext<UIStateModel>, action: OpenCart) {
+
+        ctx.patchState({
+            cartIsOpen: true
+        });
+
+    }
+
+    //close cart
+    @Action(CloseCart)
+    closeCart(ctx: StateContext<UIStateModel>, action: CloseCart) {
+
+        ctx.patchState({
+            cartIsOpen: false
+        })
         
     }
 

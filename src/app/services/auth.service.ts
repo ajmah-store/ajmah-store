@@ -521,6 +521,9 @@ export class AuthService {
       //redirect to home
       this.router.navigate(['store']);
 
+      //empty cart
+      //this.store.dispatch(new EmptyCart());
+
     }
 
     catch(error) {

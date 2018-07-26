@@ -3,6 +3,8 @@ import { primary_menu, user_menu } from '../../constants';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user.model';
 import { Subscription } from 'rxjs';
+import { Store } from '@ngxs/store';
+import { OpenCart } from '../../store/actions/ui.actions';
 
 @Component({
   selector: 'app-navbar',
@@ -20,7 +22,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   subscriptions = new Subscription();
 
   constructor(
-    private auth: AuthService
+    private auth: AuthService,
+    private store: Store
   ) { }
 
   ngOnInit() {
@@ -72,6 +75,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscriptions.unsubscribe();
+  }
+
+  openCart() {
+
+    this.store.dispatch(new OpenCart());
+
   }
 
 }

@@ -16,13 +16,13 @@ export class ProfilePageComponent implements OnInit {
   ngOnInit() {
 
     //initialize Semantic UI Components
-    this.initUI();
+    setTimeout(()=>this.initUI(), 300);
   }
 
   initUI() {
     $("#sidebar").visibility({
       type: 'fixed',
-      offset: $('#navbar').height()+28
+      offset: $('#navbar').outerHeight()
     });
 
   }

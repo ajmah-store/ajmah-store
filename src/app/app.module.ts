@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -32,6 +32,7 @@ import { EditAddressComponent } from './partials/edit-address/edit-address.compo
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { SalesSliderComponent } from './partials/sales-slider/sales-slider.component';
 import { ProductComponent } from './components/product/product.component';
+import { CartComponent } from './partials/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -55,11 +56,13 @@ import { ProductComponent } from './components/product/product.component';
     HomePageComponent,
     SalesSliderComponent,
     ProductComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    FormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(firebase_config),
     AngularFireAuthModule,

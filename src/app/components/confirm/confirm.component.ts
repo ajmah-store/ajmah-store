@@ -26,10 +26,7 @@ export class ConfirmComponent implements OnInit, OnDestroy {
         this.store.dispatch(new DismissConfirm(this.confirm));
 
       }
-    });
-
-    //show modal
-    $(this.modal.nativeElement).modal('show');
+    }).modal('setting', 'closable', false).modal('show');
 
   }
 
