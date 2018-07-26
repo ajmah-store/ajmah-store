@@ -7,6 +7,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage'
+import { AngularFireFunctionsModule } from 'angularfire2/functions';
 import { firebase_config } from '../private/firebase.config'; 
 import { StoreModule } from './store/store.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -28,6 +29,9 @@ import { AddAddressComponent } from './partials/add-address/add-address.componen
 import { InputCalendarComponent } from './components/input-calendar/input-calendar.component';
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import { EditAddressComponent } from './partials/edit-address/edit-address.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { SalesSliderComponent } from './partials/sales-slider/sales-slider.component';
+import { ProductComponent } from './components/product/product.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +52,9 @@ import { EditAddressComponent } from './partials/edit-address/edit-address.compo
     InputCalendarComponent,
     ConfirmComponent,
     EditAddressComponent,
+    HomePageComponent,
+    SalesSliderComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +65,7 @@ import { EditAddressComponent } from './partials/edit-address/edit-address.compo
     AngularFireAuthModule,
     AngularFirestoreModule.enablePersistence(),//offline data
     AngularFireStorageModule,
+    AngularFireFunctionsModule,
     StoreModule,
     HttpClientModule
   ],

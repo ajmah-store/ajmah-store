@@ -1,0 +1,112 @@
+.slider-container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    margin-top: -14px;
+    overflow: hidden !important;
+    position: relative;
+
+    .slider-content {
+        display: flex;
+        box-sizing: border-box;
+        transition: transform 0.3s ease-in-out;
+
+        img {
+            height: 100%;
+            width: 0;
+            flex: 1;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    .slider-actions {
+        height: 0;
+        overflow: visible !important;
+        opacity: 0;
+        transition: opacity 0.3s ease-in;
+
+        .action-previous {
+            position: absolute;
+            top: calc( 50% - 18px);
+            left: 0;
+        }
+
+        .action-next {
+            position: absolute;
+            top: calc( 50% - 18px);
+            right: 0;
+        }
+    }
+
+    &:hover {
+        .slider-actions {
+            opacity: 1;
+        }
+    }
+
+    .slider-labels {
+        display: flex;
+        width: 100%;
+        position: absolute;
+        bottom: 14px;
+        left: 0;
+        justify-content: center;
+
+        .slider-label {
+            display: block;
+            width: 5px;
+            height: 5px;
+            margin-right: 2.5px;
+            background: #FFF;
+            transition: padding 0.3s ease-in-out;
+            border-radius: 50rem;
+
+            &:last-child { margin-right: 0; }
+
+            &.active { padding-left: 14px; }
+        }
+    }
+
+    /* Media Queries*/
+
+    /* Mobiles */
+    @media only screen and (max-width: 480px) {
+        .slider-content {
+            height: 90px;
+        }
+    }
+
+    /* Smart phones */
+
+    @media only screen and (min-width: 481px) and (max-width: 767px) {
+        .slider-content {
+            height: 130px;
+        }
+    }
+
+    /* Tablet */
+
+    @media only screen and (min-width: 768px) and (max-width: 991px) {
+        .slider-content {
+            height: 170px;
+        }
+    }
+
+    /* Small Monitor */
+
+    @media only screen and (min-width: 992px) and (max-width: 1199px) {
+        .slider-content {
+            height: 210px;
+        }
+    }
+
+
+    /* Large Monitor */
+
+    @media only screen and (min-width: 1200px) {
+        .slider-content {
+            height: 250px;
+        }
+    }
+}

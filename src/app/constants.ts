@@ -100,3 +100,16 @@ export const REGEXP = {
     pin: '^[0-9]{6}$',
     non_empty: '^(.*[^ \t]+.*)+$'
 }
+
+
+
+
+/**
+ * Callable functions
+ */
+
+ export const FUNCTIONS = {
+
+    getLatestProducts: 'getLatestProducts'
+
+ };

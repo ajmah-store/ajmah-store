@@ -1,0 +1,41 @@
+<sales-slider></sales-slider>
+<div class="ui basic segment">
+
+    <!-- Top Selling -->
+    <h3 class="ui top attached header text-upper">
+        Top Sellers
+    </h3>
+    <div class="ui bottom attached secondary segment" id="productList">
+        <div class="ui active inverted dimmer" *ngIf="!products">
+            <div class="ui text loader">Fetching Products</div>
+        </div>
+
+        <!-- GRID -->
+        <div class="ui grid" *ngIf="products && !products.isEmpty()">
+
+            <div class="doubling six column row">
+                <div class="column" *ngFor="let product of products.toArray()">
+                    <!-- Each Product -->
+                    <app-product [product]="product" (add)="addToCart($event)" (like)="likeProduct($event)"></app-product>
+                    <!-- /Each Product -->
+                </div>
+            </div>
+
+        </div>
+        <!-- /GRID -->
+
+        <!-- Placeholder -->
+        <div class="placeholder" *ngIf="products && products.isEmpty()">
+            <h2 class="ui icon header">
+            <i class="frown outline icon"></i>
+            <div class="content">
+                Nothing to show
+            </div>
+            </h2>
+        </div>
+        <!-- /Placeholder -->
+
+    </div>
+
+    <!-- /Top Selling -->
+</div>

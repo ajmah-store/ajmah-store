@@ -1,0 +1,15 @@
+.ui.ribbon.label {
+    z-index: 5 !important;
+}
+
+.card .small.header {
+    font-size: 1.1em;
+}
+
+.card .ui.right.ribbon.label {
+    left:  calc(100% + -.05rem + 1.2em + 1px) !important; 
+}
+
+.card {
+    height: 100%;
+}

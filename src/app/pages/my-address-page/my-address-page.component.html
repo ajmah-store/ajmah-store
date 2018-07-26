@@ -9,10 +9,10 @@
   </div>
 </div>
 
-<div class="ui secondary attached segment" *ngIf="!addresses || addresses.isEmpty()" [class.loading]="!addresses">
+<div class="ui secondary attached segment" id="placeholder" *ngIf="!addresses || addresses.isEmpty()" [class.loading]="!addresses">
 
   <!-- Placeholder -->
-  <div class="placeholder">
+  <div class="placeholder" *ngIf="addresses">
     <h2 class="ui icon header">
       <i class="address book outline icon"></i>
       <div class="content">

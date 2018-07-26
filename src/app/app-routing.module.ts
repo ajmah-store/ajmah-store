@@ -7,6 +7,7 @@ import { MyAccountPageComponent } from "./pages/my-account-page/my-account-page.
 import { MyAddressPageComponent } from "./pages/my-address-page/my-address-page.component";
 import { MyOrdersPageComponent } from "./pages/my-orders-page/my-orders-page.component";
 import { AuthGuard } from "./guards/auth.guard";
+import { HomePageComponent } from "./pages/home-page/home-page.component";
 
 const routes: Routes = [
     {
@@ -16,6 +17,10 @@ const routes: Routes = [
             {
                 path: 'login',
                 component: LoginPageComponent
+            },
+            {
+                path: 'home',
+                component: HomePageComponent
             },
             {
                 path: 'profile',
@@ -43,7 +48,7 @@ const routes: Routes = [
             },
             {
                 path: '',
-                redirectTo: 'login',
+                redirectTo: 'home',
                 pathMatch: 'full'
             }
         ]

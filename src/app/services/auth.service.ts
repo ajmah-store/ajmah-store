@@ -11,6 +11,7 @@ import { ALERT_TYPES, Alert } from '../models/alert.model';
 import { Router } from '@angular/router';
 import { AngularFireUploadTask, AngularFireStorage } from 'angularfire2/storage';
 import { UploadMetadata, UploadTaskSnapshot } from 'angularfire2/storage/interfaces';
+import { readDate } from '../helpers';
 
 @Injectable({
   providedIn: 'root'
@@ -64,11 +65,12 @@ export class AuthService {
 
             (userData: any) => {
 
-              if(userData.dob) userData.dob = userData.dob.toDate()
+              if(userData.dob) userData.dob = readDate(userData.dob)
 
               return userData;
             }
           ));
+          
         }
 
         else if(user === null) return EMPTY;

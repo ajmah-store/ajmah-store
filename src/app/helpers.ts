@@ -40,3 +40,14 @@ export function trimData(datas: any): any {
     return newData;
 
 }
+
+/**
+ * read the date object from firebase timestamp object
+ * @param timestamp timestamp retrieved from firestore
+ * @returns date object created from timestamp
+ */
+ export function readDate(timestamp: firebase.firestore.Timestamp): Date {
+
+    return timestamp.toDate();
+
+ }

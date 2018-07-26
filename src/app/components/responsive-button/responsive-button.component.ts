@@ -13,15 +13,9 @@ export class ResponsiveButtonComponent implements OnInit {
   @Input() right: boolean = false;
   @Input() loading: boolean = false;
 
-  @Output() click = new EventEmitter<any>();
-
   constructor() { }
 
   ngOnInit() {
-  }
-
-  emitClick() {
-    this.click.emit();
   }
 
   getStyle() {

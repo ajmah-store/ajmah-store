@@ -1,0 +1,20 @@
+<div class="slider-container" *ngIf="sales">
+  <div class="slider-content" [ngStyle]="contentStyle">
+    <img *ngFor="let sale of sales" class="slide" [src]="sale.bannerURL" [alt]="sale.name">
+  </div>
+  <div class="slider-actions">
+    <!-- Previous -->
+    <button class="ui right attached basic icon button action-previous" (click)="previousSlide()">
+      <i class="chevron left icon"></i>
+    </button>
+    <!-- /Previous -->
+    <!-- Next -->
+    <button class="ui left attached basic icon button action-next" (click)="nextSlide()">
+      <i class="chevron right icon"></i>
+    </button>
+    <!-- /Next -->
+  </div>
+  <div class="slider-labels">
+    <span *ngFor="let sale of sales; let i = index" class="slider-label" [class.active]="currentSlide==i"></span>
+  </div>
+</div>

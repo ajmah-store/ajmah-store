@@ -1,0 +1,22 @@
+<div class="ui fluid card">
+  <div class="image">
+    <span class="ui orange right ribbon label" *ngIf="product.featured"> 
+        <i class="star icon"></i> Featured
+    </span>
+    <img src="assets/placeholder-image.svg" [attr.data-src]="product.featuredImageUrl" [alt]="product.name" #featuredImage>
+  </div>
+  <div class="content">
+        <i class="right floated like icon" (click)="emitLike()"></i>
+        <a class="small header">{{product.name}}</a>
+        <div class="meta">{{ product.category.name }}</div>
+  </div>
+  <div class="content">
+        <span class="right floated striked">
+            {{ product.price | currency:'INR' }}
+        </span>
+        {{ discountPrice | currency:'INR' }}
+  </div>
+  <div class="center aligned extra content">
+    <responsive-button primary="true" icon="cart add" (click)="emitAdd()">Add to Cart</responsive-button>
+  </div>
+</div>

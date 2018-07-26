@@ -5,7 +5,7 @@
 /*
 * Colors
 */
-
+/*
 @red            : #B03060;
 @orange         : #FE9A76;
 @yellow         : #FFD700;
@@ -16,15 +16,15 @@
 @violet         : #EE82EE;
 @purple         : #B413EC;
 @pink           : #FF1493;
-@magenta        : #d82446;
 @brown          : #A52A2A;
 @grey           : #A0A0A0;
 @black          : #000000;
+*/
 
 /**
 * Theme
 */
-
+@magenta        : #d82446;
 @primaryColor   : @magenta;
 @secondaryColor : @grey;
 
