@@ -8,6 +8,7 @@ import { MyAddressPageComponent } from "./pages/my-address-page/my-address-page.
 import { MyOrdersPageComponent } from "./pages/my-orders-page/my-orders-page.component";
 import { AuthGuard } from "./guards/auth.guard";
 import { HomePageComponent } from "./pages/home-page/home-page.component";
+import { ErrorPageComponent } from "./pages/error-page/error-page.component";
 
 const routes: Routes = [
     {
@@ -57,6 +58,10 @@ const routes: Routes = [
         path: '',
         redirectTo: 'store',
         pathMatch: "full"
+    },
+    {
+        path: '**',
+        component: ErrorPageComponent
     }
 ];
 

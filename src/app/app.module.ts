@@ -33,6 +33,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { SalesSliderComponent } from './partials/sales-slider/sales-slider.component';
 import { ProductComponent } from './components/product/product.component';
 import { CartComponent } from './partials/cart/cart.component';
+import { ErrorPageComponent } from './pages/error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { CartComponent } from './partials/cart/cart.component';
     SalesSliderComponent,
     ProductComponent,
     CartComponent,
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule,

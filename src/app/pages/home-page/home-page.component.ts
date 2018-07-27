@@ -32,8 +32,6 @@ export class HomePageComponent implements OnInit {
 
     this.products = await this.ps.getProducts(limit);
 
-    //console.log(this.products.toString((product) => JSON.stringify(product)));
-
     // this.products = new ArrayList<Product>(limit, ...[
     //   {
     //     "salesCount":0,
