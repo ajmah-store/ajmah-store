@@ -120,7 +120,7 @@ export const REGEXP = {
 
  export const FUNCTIONS = {
 
-    HOST_URL: 'http://localhost:5000/ajmah-2a334/us-central1',
+    HOST_URL: 'https://us-central1-ajmah-2a334.cloudfunctions.net',
     CALLABLE: {
         getLatestProducts: 'getLatestProducts',
     },
