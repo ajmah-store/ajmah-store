@@ -1,0 +1,36 @@
+<h3 class="ui top attached header">Select an Address</h3>
+
+<div class="ui attached secondary padded segment" *ngIf="addresses && !addresses.isEmpty()">
+  <div class="ui stackable two column padded grid">
+    <div class="column" *ngFor="let address of addresses.toArray()">
+        <app-address [address]="address" [active]="address === activeAddress" (click)="emitSelect(address)"></app-address>
+    </div>
+  </div>
+</div>
+
+<div class="ui attached center aligned segment" *ngIf="activeAddress">
+  <button class="ui primary icon labeled button" (click)="emitNext()">
+    <i class="right arrow icon"></i>
+    Next
+  </button>
+</div>
+
+<div class="ui secondary attached segment" id="placeholder" *ngIf="!addresses || addresses.isEmpty()" [class.loading]="!addresses">
+
+  <!-- Placeholder -->
+  <div class="placeholder" *ngIf="addresses">
+    <h2 class="ui icon header">
+      <i class="address book outline icon"></i>
+      <div class="content">
+        Blank Address Book!
+        <div class="sub header">Add frequently used addresses here for faster checkouts.</div>
+      </div>
+    </h2>
+  </div>
+  <!-- /Placeholder -->
+
+</div>
+<div class="ui bottom attached segment">
+  <h4 class="ui header">Add Another Address</h4>
+  <app-add-address></app-add-address>
+</div>

@@ -39,7 +39,7 @@
                     {{link.label}}
                 </a>
                 <div class="divider"></div>
-                <a *ngFor="let link of userLinks" [routerLink]="link.href" routerLinkActive="active" class="item" [class.hidden]="! authenticated | async">
+                <a *ngFor="let link of userLinks" [routerLink]="link.href" routerLinkActive="active" class="item" [class.aj_hidden]="! authenticated | async">
                     <i class="icon" [ngClass]="link.icon"></i>
                     {{link.label}}
                 </a>
@@ -61,7 +61,7 @@
                 <span>John Doe</span>
             </a> -->
 
-            <div class="ui top pointing dropdown item" [class.hidden]="!(authenticated | async)">
+            <div class="ui top pointing dropdown item" [class.aj_hidden]="!(authenticated | async)">
                 <div class="text">
                     <span *ngIf="currentUser">
                         <img [src]="currentUser.photoURL || 'assets/avatar.jpg'" class="ui avatar image">

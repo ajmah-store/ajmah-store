@@ -24,7 +24,7 @@
     height: 1rem;
 }
 
-.hidden {
+.aj_hidden {
     display: none !important;
 }
 
@@ -175,3 +175,18 @@
     }
 }
 
+/** Slick Slider **/
+
+.slick-arrow {
+    position: absolute !important;
+    top: calc(50% - 18px);
+    z-index: 8;
+
+    &.slick-next {
+        right: 0px;
+    }
+
+    &.slick-prev {
+        left: 0px;
+    }
+}

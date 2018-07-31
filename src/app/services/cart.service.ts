@@ -7,7 +7,7 @@ import { CreateAlert, DismissAlert } from '../store/actions/ui.actions';
 import { first, map } from 'rxjs/operators';
 import { Dictionary, ArrayList } from '@arjunatlast/jsds';
 import { CartSlot } from '../models/cart-slot.model';
-import { Observable, Subject } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,8 @@ import { Observable, Subject } from 'rxjs';
 export class CartService {
 
   private cart: Dictionary<CartSlot> = new Dictionary<CartSlot>();
-  private cart$ = new Subject<ArrayList<CartSlot>>();
+  private cart$: BehaviorSubject<ArrayList<CartSlot>>;
+  private total$: BehaviorSubject<number>;
 
   constructor(
     private auth: AuthService,
@@ -23,6 +24,9 @@ export class CartService {
   ) {
 
     setTimeout(()=>this.emitValue(), 1000);
+
+    this.cart$ = new BehaviorSubject<ArrayList<CartSlot>>(new ArrayList(this.cart.size(), ...this.cart.values().toArray()));
+    this.total$ = new BehaviorSubject<number>(0);
 
    }
 
@@ -98,18 +102,22 @@ export class CartService {
   updateQuantity(product_id: string, quantity: number) {
 
     try {
+
+      if(quantity > 0) {
+
+        //find the corresponding slot
+        const slot = this.cart.get(product_id);
+
+        //if slot doesn't exist throw error
+        if(!slot) throw new Error('Seems like the product is not on your cart.');
+
+        //change quantity
+        slot.quantity = Math.abs(quantity);
+
+        //emit new cart
+        this.emitValue();
       
-      //find the corresponding slot
-      const slot = this.cart.get(product_id);
-
-      //if slot doesn't exist throw error
-      if(!slot) throw new Error('Seems like the product is not on your cart.');
-
-      //change quantity
-      slot.quantity = Math.abs(quantity);
-
-      //emit new cart
-      this.emitValue();
+      }
 
     }
 
@@ -141,10 +149,46 @@ export class CartService {
     
   }
 
+  /**
+   * Return the total amount of all items in the cart
+   */
+  getTotalAmount(): Observable<number> {
+
+    return this.total$.asObservable();
+
+  }
+
+  /**
+   * Remove all items from cart
+   */
+  emptyCart() {
+
+    this.cart.clear();
+    
+  }
+
   private emitValue() {
 
     this.cart$.next(new ArrayList<CartSlot>(this.cart.size(), ... this.cart.values().toArray()));
+    this.total$.next(this.totalValue());
 
+  }
+
+  private totalValue(): number {
+
+    let total = 0;
+
+    this.cart.values().forEach(
+
+      ({product, quantity}) => {
+
+        const final_price =  product.price * (100 - product.discount) / 100;
+        total += final_price * quantity;
+
+      }
+    );
+
+    return total;
   }
 
 }

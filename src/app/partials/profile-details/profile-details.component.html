@@ -67,9 +67,7 @@
         class="ui blurring circular nopadding segment" 
         id="profile-pic-container" 
         [class.loading]="pictureIsLoading"
-        (mouseenter)="dim('#profile-pic-dimmer')"
-        (click)="dim('#profile-pic-dimmer')" 
-        (mouseleave)="reveal('#profile-pic-dimmer')">
+        (click)="dim('#profile-pic-dimmer')">
 
         <img [src]="user.photoURL || 'assets/avatar.jpg'" onerror="this.src='assets/avatar.jpg'" alt="Profile Picture" class="ui small centered circular image" #profilePicture>
         <div class="ui dimmer" id="profile-pic-dimmer">

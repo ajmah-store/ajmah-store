@@ -1,0 +1,52 @@
+<div class="ui basic extra padded segment" id="checkoutPage">
+
+  <div class="ui three unstackable fluid steps">
+    <div class="step" [ngClass]="getStepStyle(1)" (click)="setStep(1)">
+      <i class="truck icon"></i>
+      <div class="content">
+        <div class="title">Shipping</div>
+        <div class="description mobile-hide">Choose your shipping address</div>
+      </div>
+    </div>
+    <div class="step" [ngClass]="getStepStyle(2)" (click)="setStep(2)">
+      <i class="handshake icon"></i>
+      <div class="content">
+        <div class="title">Place Order</div>
+        <div class="description mobile-hide">Confirm cart and place order for checkout</div>
+      </div>
+    </div>
+    <div class="step" [ngClass]="getStepStyle(3)" (click)="setStep(3)">
+      <i class="credit card icon"></i>
+      <div class="content">
+        <div class="title">Billing</div>
+        <div class="description mobile-hide">Complete payment</div>
+      </div>
+    </div>
+  </div>
+
+  <app-select-address *ngIf="currentStep === 1" [addresses]="addresses" [activeAddress]="activeAddress" (next)="setStep(2)" (select)="selectAddress($event)"></app-select-address>
+
+  <app-billing-checkout 
+    [cart]="userCart"
+    *ngIf="currentStep === 2 || currentStep === 3"
+    [payment]="currentStep === 3" 
+    (pay)="completePayment()" 
+    (confirm)="confirmOrder($event)"
+    [paymentLoading]="paymentLoading"
+    [orderLoading]="placeOrderLoading"></app-billing-checkout>
+  
+  <div class="ui center aligned segment" *ngIf="currentStep === 4">
+
+    <div class="ui icon header">
+      <i class="shipping fast icon"></i>
+      <div class="content">
+        We're on the way.
+        <div class="sub header">We value your time. Your order will be delivered soon. </div>
+      </div>
+    </div>
+
+    <a routerLink="../home" class="ui large primary button">Continue Shopping</a>
+
+  </div>
+
+</div>

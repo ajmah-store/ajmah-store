@@ -11,15 +11,24 @@ export class SalesSliderComponent implements OnInit {
   sales: Sale[] = [
     {
       name: 'First Sale',
-      bannerURL: 'assets/images/banner_placeholder.jpg'
+      bannerURL: {
+        desktop: 'assets/images/banner_placeholder.jpg',
+        mobile: 'assets/images/banner_placeholder_mobile.jpg'
+      }
     },
     {
       name: 'Second Sale',
-      bannerURL: 'assets/images/banner_placeholder.jpg'
+      bannerURL: {
+        desktop: 'assets/images/banner_placeholder.jpg',
+        mobile: 'assets/images/banner_placeholder_mobile.jpg'
+      }
     },
     {
       name: 'Third Sale',
-      bannerURL: 'assets/images/banner_placeholder.jpg'
+      bannerURL: {
+        desktop: 'assets/images/banner_placeholder.jpg',
+        mobile: 'assets/images/banner_placeholder_mobile.jpg'
+      }
     }
   ];
 
@@ -32,47 +41,19 @@ export class SalesSliderComponent implements OnInit {
 
   ngOnInit() {
 
-    this.numSlide = this.sales.length;
-    this.startSlide();
-
-  }
-  
-  get currentSlide() {
-    return this._currentSlide;
-  }
-
-  set currentSlide(val: number) {
-    this._currentSlide = val;
-
-    //clear interval
-    if(this.slideInterval) clearInterval(this.slideInterval);
-    this.startSlide();
-  }
-
-  nextSlide() {
-    this.currentSlide = (this.currentSlide + 1) % this.numSlide;
-  }
-
-  previousSlide() {
-    this.currentSlide = (this.currentSlide + this.numSlide - 1) % this.numSlide;
-  }
-
-  //start auto sliding
-  startSlide() {
-
-    //slide every this.duration milli seconds
-    this.slideInterval = setInterval(() => {this.nextSlide()}, this.duration);
+    setTimeout(()=>this.initSlider(),300);
 
   }
 
-
-  get contentStyle(): any {
-
-    return {
-      transform: `translateX(-${this.currentSlide*100 / this.numSlide}%)`,
-      width: `${this.numSlide*100}%`
-    };
-
+  initSlider() {
+    $(".sales-slider").slick({
+      autoPlay: true,
+      autoPlaySpeed: 5000,
+      infinite: true,
+      prevArrow: `<div class="ui right attached basic icon button slick-prev"><i class="left arrow icon"></i></div>`,
+      nextArrow: `<div class="ui left attached basic icon button slick-next"><i class="right arrow icon"></i></div>`,
+      mobileFirst: true
+    });
   }
 
 }

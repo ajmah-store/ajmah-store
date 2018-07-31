@@ -9,6 +9,8 @@ import { Address } from '../../models/address.model';
 export class AddressComponent implements OnInit {
 
   @Input() address: Address;
+  @Input() editable: string;
+  @Input() active: boolean;
 
   @Output() edit = new EventEmitter<Address>();
   @Output() remove = new EventEmitter<Address>();

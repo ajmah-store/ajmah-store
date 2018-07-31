@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { primary_menu, user_menu } from '../../constants';
+import { primary_menu, user_menu, FUNCTIONS } from '../../constants';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user.model';
 import { Subscription } from 'rxjs';
@@ -107,7 +107,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
           }
 
         },
-        url: 'https://us-central1-ajmah-2a334.cloudfunctions.net/api/searchProduct/{query}'
+        url: `${FUNCTIONS.HOST_URL}/${FUNCTIONS.API.searchProduct}/{query}`
       },
       minCharacters: 3,
     });

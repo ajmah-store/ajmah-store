@@ -1,6 +1,12 @@
 //jQuery
 declare const $;
 
+//Razorpay
+declare class Razorpay {
+    constructor(...args:any[]);
+    open();
+}
+
 /**
  * Croppie Plugin
  */

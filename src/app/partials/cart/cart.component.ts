@@ -6,11 +6,25 @@ import { Store } from '@ngxs/store';
 import { CartService } from '../../services/cart.service';
 import { Subscription } from 'rxjs';
 import { CloseCart } from '../../store/actions/ui.actions';
+import { THEME } from '../../constants';
+import { trigger, transition, style, animate, query } from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+  styleUrls: ['./cart.component.scss'],
+  animations: [
+    trigger('tableAnimation', [
+      transition("*=>*", [
+        //leave anim
+        query('tr:leave', animate('300ms ease-in-out', style({opacity:0, transform: 'translateY(-50px)'})),{optional: true}),
+        //enter anim
+        query('tr:enter', style({opacity:0, transform: 'translateY(-50px)'}), {optional: true}),
+        query('tr:enter', animate('300ms ease-in-out', style({opacity:1, transform: 'translateY(0)'})), {optional: true}),
+      ])
+    ])
+  ]
 })
 export class CartComponent implements OnInit, OnDestroy {
 
@@ -23,7 +37,8 @@ export class CartComponent implements OnInit, OnDestroy {
 
   constructor(
     private cs: CartService,
-    private store: Store
+    private store: Store,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -33,7 +48,9 @@ export class CartComponent implements OnInit, OnDestroy {
 
     //init modal
     $(this.cartModal.nativeElement).modal({
-      onApprove: () => {},
+      onApprove: () => {
+        return this.router.navigate(['store/checkout']);
+      },
       onDeny: () => {},
       onHidden: () => {
         this.store.dispatch(new CloseCart())
@@ -52,10 +69,12 @@ export class CartComponent implements OnInit, OnDestroy {
 
   getCart() {
     //get cart
-    this.cs.getCart().subscribe(
-      cart => {
-        this.cart = cart;
-      }
+    this.subscription.add(
+      this.cs.getCart().subscribe(
+        cart => {
+          this.cart = cart;
+        }
+      )
     );
   }
 
@@ -91,6 +110,7 @@ export class CartComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     
+    this.subscription.unsubscribe();
     $(this.cartModal).modal('hide');
 
   }
@@ -100,6 +120,12 @@ export class CartComponent implements OnInit, OnDestroy {
     const q = parseInt(quantity);
     
     if(!isNaN(q)) this.cs.updateQuantity(product.id, Math.abs(q));
+
+  }
+
+  removeItem(product: Product) {
+
+    this.cs.removeFromCart(product.id);
 
   }
 

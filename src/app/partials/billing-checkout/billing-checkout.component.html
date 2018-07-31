@@ -1,0 +1,71 @@
+<div *ngIf="!payment">
+    <div class="ui top attached segment" [class.loading]="orderLoading">
+
+        <table class="ui celled unstackable table" *ngIf="cart && !cart.isEmpty()">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Rate</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr *ngFor="let item of cart.toArray()">
+                    <td> 
+                        <img [src]="item.product.featuredImageUrl" [alt]="item.product.name" class="ui avatar image">
+                        {{ item.product.name}} 
+                    </td>
+                    <td> {{ discountPrice(item.product) | currency:'INR' }} </td>
+                    <td>
+                        {{ item.quantity }}
+                    </td>
+                    <td> {{ totalPrice(item) | currency:'INR' }} </td>
+                </tr>
+        
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th class="right aligned" colspan="3"><b>Total</b></th>
+                    <th> {{ grandTotal() | currency:'INR' }} </th>
+                </tr>
+            </tfoot>
+        </table>
+
+        <div class="ui center aligned basic segment" *ngIf="cart && !cart.isEmpty()">
+    
+            <button class="ui primary icon labeled button" (click)="emitConfirm()">
+                <i class="handshake outline icon"></i>
+                Place Order
+            </button>
+        
+        </div>
+        
+    </div>
+</div>
+
+<div *ngIf="payment">
+
+    <div class="ui top attached icon message">
+        <i class="check icon"></i>
+        <div class="content">
+            <div class="header">
+                Your order has been placed successfully
+            </div>
+            <p>Complete your payment to checkout.</p>
+        </div>
+    </div>
+    <div class="ui attached secondary segment" [class.loading]="paymentLoading">
+        <div class="vh-30">
+            <button class="ui huge primary right labeled icon button" (click)="emitPay()">
+                <i class="credit card outline icon"></i>
+                Complete Payment
+            </button>
+        </div>
+    </div>
+    <div class="ui bottom attached info message">
+        You can also complete payment using the invoice sent via phone or email.
+    </div>
+
+</div>

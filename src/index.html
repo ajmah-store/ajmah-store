@@ -2,28 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>AjmahStore</title>
+  <title>Ajmah Store</title>
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#D82446">
+  <meta name="description" content="A store for your daily needs." />
+
+  <!-- Schema.org markup for Google+ -->
+  <meta itemprop="name" content="Ajmah Store">
+  <meta itemprop="description" content="A store for your daily needs.">
+  <meta itemprop="image" content="assets/logo.svg">
+
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="assets/logo.svg">
+  <!-- <meta name="twitter:site" content="@publisher_handle"> -->
+  <meta name="twitter:title" content="Ajmah Store">
+  <meta name="twitter:description" content="A store for your daily needs">
+  <meta name="twitter:creator" content="@author_handle">
+  <!-- Twitter summary card with large image must be at least 280x150px -->
+  <meta name="twitter:image:src" content="assets/logo.svg">
+
+  <!-- Open Graph data -->
+  <meta property="og:title" content="Ajmah" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="http://www.example.com/" />
+  <meta property="og:image" content="assets/image.jpg" />
+  <meta property="og:description" content="A store for your daily needs." /> 
+  <meta property="og:site_name" content="Ajmah Store" />
+  <!-- <meta property="fb:admins" content="Facebook numeric ID" /> -->
+
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- manifest -->
+  <link rel="manifest" href="assets/manifest.json">
   <!-- UIkit CSS -->
   <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
   <!-- Simplebar -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css">
   <!-- <link rel="stylesheet" href="assets/animate.css">-->
   <link rel="stylesheet" href="assets/croppie/croppie.css">
-  <!-- manifest -->
-  <link rel="manifest" href="assets/manifest.json">
+  <!-- Slick Slider -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
 </head>
 <body>
   <app-root></app-root>
 
-
     <!-- Simplebar -->
     <script  src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <!-- jQuery Address -->
+    <script src="assets/js/jquery.address.js"></script>
+    <!-- razorpay -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.js"></script> -->
     <script src="assets/croppie/croppie.js"></script>
+    <!-- Slick Slider -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    
 </body>
 </html>

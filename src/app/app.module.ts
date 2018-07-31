@@ -34,6 +34,9 @@ import { SalesSliderComponent } from './partials/sales-slider/sales-slider.compo
 import { ProductComponent } from './components/product/product.component';
 import { CartComponent } from './partials/cart/cart.component';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
+import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
+import { SelectAddressComponent } from './partials/select-address/select-address.component';
+import { BillingCheckoutComponent } from './partials/billing-checkout/billing-checkout.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +62,9 @@ import { ErrorPageComponent } from './pages/error-page/error-page.component';
     ProductComponent,
     CartComponent,
     ErrorPageComponent,
+    CheckoutPageComponent,
+    SelectAddressComponent,
+    BillingCheckoutComponent,
   ],
   imports: [
     BrowserModule,

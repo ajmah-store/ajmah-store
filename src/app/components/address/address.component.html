@@ -1,4 +1,4 @@
-<div class="ui fluid card" *ngIf="address">
+<div class="ui fluid card" *ngIf="address" [class.active]="active">
   <div class="content">
     <div class="right floated meta"><i class="icon" [ngClass]="typeIcon"></i></div>
     <div class="header">{{ address.name }}</div>
@@ -11,7 +11,7 @@
   </div>
 
   <!-- Action buttons -->
-  <div class="extra content flex">
+  <div class="extra content flex" *ngIf="editable === 'true'">
     <responsive-button icon="trash alternate" class="ml-auto" (click)="emitRemove()">Remove</responsive-button>
     <responsive-button icon="edit" color="blue" (click)="emitEdit()">Edit</responsive-button>
   </div>

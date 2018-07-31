@@ -4,7 +4,7 @@
 <div class="ui attached secondary padded segment" id="addressList" *ngIf="addresses && !addresses.isEmpty()">
   <div class="ui stackable two column padded grid">
     <div class="column" *ngFor="let address of addresses.toArray()">
-        <app-address [address]="address" (edit)="editAddress = $event" (remove)="removeAddress($event)"></app-address>
+        <app-address [address]="address" editable="true" (edit)="editAddress = $event" (remove)="removeAddress($event)"></app-address>
     </div>
   </div>
 </div>
@@ -29,6 +29,7 @@
   <button class="ui right floated basic small icon button" (click)="editAddress = null">
     <i class="close icon"></i>
   </button>
+  <h2>Edit Address</h2>
   <app-edit-address [address]="editAddress"></app-edit-address>
 </div>
 
@@ -36,6 +37,7 @@
   <button class="ui right floated basic small icon button" (click)="addAddressOpen = false">
     <i class="close icon"></i>
   </button>
+  <h2>Add Address</h2>
   <app-add-address></app-add-address>
 </div>
 

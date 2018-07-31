@@ -1,4 +1,4 @@
-<div class="ui large modal" #cartModal>
+<div class="ui large modal" id="cartModal" #cartModal>
     <div class="header">My Cart</div>
     
     <div class="scrolling content">
@@ -9,9 +9,10 @@
                     <th>Rate</th>
                     <th>Quantity</th>
                     <th>Total</th>
+                    <th></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody [@tableAnimation]="cart.size()">
                 
                 <tr *ngFor="let item of cart.toArray()">
                     <td> 
@@ -29,13 +30,18 @@
                         </div>
                     </td>
                     <td> {{ totalPrice(item) | currency:'INR' }} </td>
+                    <td class="collapsing">
+                        <button class="ui icon button" (click)="removeItem(item.product)">
+                            <i class="trash alternate icon"></i>
+                        </button>
+                    </td>
                 </tr>
 
             </tbody>
             <tfoot>
                 <tr>
-                    <th class="right aligned" colspan="3">Total</th>
-                    <th> {{ grandTotal() | currency:'INR' }} </th>
+                    <th class="right aligned" colspan="3"><b>Total</b></th>
+                    <th colspan="2"> {{ grandTotal() | currency:'INR' }} </th>
                 </tr>
             </tfoot>
         </table>

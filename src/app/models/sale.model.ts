@@ -5,5 +5,5 @@
  export class Sale {
      id?: any;
      name: string;
-     bannerURL: string;
+     bannerURL: string | { desktop?, mobile? };
  }

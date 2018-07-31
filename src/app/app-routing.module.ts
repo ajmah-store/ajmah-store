@@ -9,6 +9,8 @@ import { MyOrdersPageComponent } from "./pages/my-orders-page/my-orders-page.com
 import { AuthGuard } from "./guards/auth.guard";
 import { HomePageComponent } from "./pages/home-page/home-page.component";
 import { ErrorPageComponent } from "./pages/error-page/error-page.component";
+import { CheckoutPageComponent } from "./pages/checkout-page/checkout-page.component";
+import { PaymentGuard } from "./guards/payment.guard";
 
 const routes: Routes = [
     {
@@ -22,6 +24,11 @@ const routes: Routes = [
             {
                 path: 'home',
                 component: HomePageComponent
+            },
+            {
+                path: 'checkout',
+                component: CheckoutPageComponent,
+                canActivate: [AuthGuard]
             },
             {
                 path: 'profile',

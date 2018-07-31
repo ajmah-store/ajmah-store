@@ -1,4 +1,13 @@
 /**
+ * Directories
+ */
+const BASE = '/';
+
+export const DIRECTORIES = {
+    assets: `${BASE}/assets`
+};
+
+/**
  * Collections
  */
 
@@ -6,7 +15,8 @@ export const COLLECTIONS = {
     USERS: 'users',
     PRODUCTS: 'products',
     CATEGORIES: 'categories',
-    ADDRESSES: 'addresses'
+    ADDRESSES: 'addresses',
+    ORDERS: 'orders'
 };
 
 /**
@@ -110,6 +120,24 @@ export const REGEXP = {
 
  export const FUNCTIONS = {
 
-    getLatestProducts: 'getLatestProducts'
-
+    HOST_URL: 'http://localhost:5000/ajmah-2a334/us-central1',
+    CALLABLE: {
+        getLatestProducts: 'getLatestProducts',
+    },
+    API: {
+        completePayment: 'api/completePayment',
+        createOrder: 'api/createOrder',
+        createInvoice: 'api/createInvoice',
+        searchProduct: 'api/searchProduct'
+    }
+    
  };
+
+
+ /**
+  * Theme Info
+  */
+
+  export const THEME = {
+    primary: '#d82446'
+  };

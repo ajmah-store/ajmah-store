@@ -76,6 +76,11 @@ export class ProfileDetailsComponent implements OnInit {
       duration: 1000
     });
 
+    //dimmer
+    $('#profile-pic-container').dimmer({
+      on: 'hover'
+    })
+
   }
 
   /**
@@ -104,16 +109,6 @@ export class ProfileDetailsComponent implements OnInit {
     return control.invalid && control.dirty
 
   }
-
-  /**Dimmer */
-  dim(context) {
-    $(context).dimmer('show');
-  }
-
-  reveal(context) {
-    $(context).dimmer('hide');
-  }
-  /**/
 
   /**
    * Trigger input:file

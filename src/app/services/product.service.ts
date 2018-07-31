@@ -32,7 +32,7 @@ export class ProductService {
     try {
 
       //call the getLatestProducts function
-      const products = await this.api.httpsCallable(FUNCTIONS.getLatestProducts)(limit).toPromise();
+      const products = await this.api.httpsCallable(FUNCTIONS.CALLABLE.getLatestProducts)(limit).toPromise();
 
       //backup products
       this.products = products;
